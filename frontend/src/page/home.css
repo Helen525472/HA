@@ -1,0 +1,31 @@
+.game-container {
+    display: flex;
+    flex-direction: column; 
+    justify-content: center;
+    align-items: center; 
+    text-align: center; 
+    height: 100vh;
+  }
+  
+.play-button {
+    padding: 10px 20px;
+    font-size: 20px;
+    background-color: #330084;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    margin-top: 20px;
+    font-family: 'Luckiest Guy', sans-serif;
+  }
+  
+  .play-button:hover {
+    background-color: #FFF;
+  }
+
+  h1{
+    color: #330084;
+    text-shadow: 2px 2px 0 #d3b5ff, -2px -2px 0 #d3b5ff, 2px -2px 0 #d3b5ff, -2px 2px 0 #d3b5ff;
+    margin: 0;
+  }
+  
