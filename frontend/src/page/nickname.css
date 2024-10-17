@@ -1,0 +1,50 @@
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #B890F4;
+    font-family: 'Arial', sans-serif;
+  }
+  
+  .nickname-container {
+    background-color: #5E248D;
+    padding: 50px;
+    border-radius: 20px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+    text-align: center;
+  }
+  
+  .nickname-container h1 {
+    font-size: 48px;
+    color: #FFFFFF;
+    margin-bottom: 20px;
+  }
+  
+  .nickname-container input {
+    width: 80%;
+    padding: 10px;
+    font-size: 18px;
+    margin-bottom: 20px;
+    border-radius: 10px;
+    border: none;
+    text-align: center;
+  }
+  
+  .nickname-container button {
+    padding: 10px 30px;
+    font-size: 18px;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    background-color: #CE89FC;
+    color: #000;
+  }
+  
+  .nickname-container button:hover {
+    background-color: #FFFFFF;
+  }
+  
+  .error-message {
+    color: red;
+    margin-top: 10px;
+  }
+  
