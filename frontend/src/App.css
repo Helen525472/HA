@@ -1,0 +1,24 @@
+@import url('https://fonts.googleapis.com/css2?family=Luckiest+Guy&display=swap');
+
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%; 
+  font-family: 'Luckiest Guy', sans-serif;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  width: 100vw; /* 确保背景图片铺满整个页面，注意改正逗号为分号 */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+h1 {
+  font-size: 80px;
+  font-family: 'Luckiest Guy', sans-serif;
+}
