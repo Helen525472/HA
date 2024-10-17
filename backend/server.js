@@ -3,17 +3,19 @@ const mongoose = require('mongoose');
 const cors = require('cors');
 const session= require('express-session');
 require('dotenv').config();  //加載.env檔裡面的環境變量
+const mongoURI = process.env.MONGODB_URI;
+const sessionSECRET = process.env.SESSION_SECRET;
 
 const app = express();
 
 app.use(cors({
-  origin: 'http://localhost:3000',  // 允许前端的来源地址
-  credentials: true  // 允许前端发送 cookie
+  origin: 'http://localhost:3000',  
+  credentials: true 
 }));
 app.use(express.json());
 
 app.use(session({
-  secret: process.env.SESSION_SECRET || 'fallback-secret',  
+  secret: sessionSECRET,  
   resave: false,              
   saveUninitialized: false,   
   cookie: { 
@@ -22,8 +24,8 @@ app.use(session({
     sameSite: 'lax'  }   
 }));
 
-// 連結MongoDB
-mongoose.connect('mongodb://localhost:27017/hackthon', { useNewUrlParser: true, useUnifiedTopology: true })
+// 連結MongoDB 
+mongoose.connect(mongoURI, { useNewUrlParser: true, useUnifiedTopology: true })
   .then(() => console.log('MongoDB connected'))
   .catch(err => console.error('MongoDB connection error:', err));
 
@@ -31,11 +33,16 @@ const userRoutes = require('./routes/user');
 const authRoutes = require('./routes/auth');
 const pictureRoutes = require('./routes/picture');
 const nickRoutes = require('./routes/nick');
+// const dashRoutes = require('./routes/dashboard');
+// const expRoutes = require('./routes/experience');
+
 // 使用路由
 app.use('/api/user', userRoutes);
 app.use('/api/auth', authRoutes);
 app.use('/api/picture', pictureRoutes);
-app.use('/api/nick', nickRoutes);
+app.use('/api/nickname', nickRoutes);
+// app.use('/api/dashboard', dashRoutes);
+// app.use('/api/experience', expRoutes);
 
 // 啟動服務器
 app.listen(3001, () => {

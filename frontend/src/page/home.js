@@ -7,13 +7,13 @@ function home() {
     <div
       style={{
         backgroundImage: 'url("/picture/home.png")',
-        backgroundSize: 'cover', // 确保背景图片覆盖整个页面
-        backgroundPosition: 'center', // 保证图片在页面中央
-        backgroundRepeat: 'no-repeat', // 防止图片重复
+        backgroundSize: 'cover', 
+        backgroundPosition: 'center', 
+        backgroundRepeat: 'no-repeat', 
         height: '100vh',
         width: '100vw',
-        display: 'flex', // 使用flex布局确保内容居中
-        justifyContent: 'center', // 水平居中
+        display: 'flex',
+        justifyContent: 'center', 
         alignItems: 'center',
       }}
     >

@@ -9,6 +9,7 @@ router.post('/check', async (req, res) => {
   try {
     const user = await User.findOne({ Nickname: nickname });
     if (user) {
+      console.log('沒有重複暱稱');
       return res.json({ exists: true });
     } else {
       return res.json({ exists: false });
