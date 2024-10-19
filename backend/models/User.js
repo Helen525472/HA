@@ -6,6 +6,10 @@ const userSchema = new mongoose.Schema({
   ProfilePicture: Number,
   Nickname:String,
   Status: String,
+  Level: { type: Number, default: 1 },
+  Experience: { type: Number, default: 0 },
+  TotalExperience: Number,
+
 }, { collection: 'EMPLOYEE' });
 
 const User = mongoose.model('User', userSchema);

@@ -1,0 +1,29 @@
+[
+    {
+      "_id": "1",
+      "sID": "1001",
+      "rname": "Ari Hartmann",
+      "rID": "1002",
+      "points": 10,
+      "msg" : "Good Job!",
+      "time": "14:38, 10/18/2024(Fri)"
+    },
+    {
+      "_id": "2",
+      "sID": "1003",
+      "rname": "Ari Hartmann",
+      "rID": "1002",
+      "points": 0,
+      "msg" : "You did great!",
+      "time": "21:26, 10/18/2024(Fri)"
+    },
+    {
+      "_id": "3",
+      "sID": "1003",
+      "rname": "Shanel Terry",
+      "rID": "1001",
+      "points": 0,
+      "msg" : "Nice!",
+      "time": "13:00, 10/18/2024(Fri)"
+    }
+  ]

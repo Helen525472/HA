@@ -8,7 +8,9 @@ router.post('/check-user', async (req, res) => {
     const { userId, password } = req.body;
     
     // 密碼格式化為 YYYY-MM-DD 格式
-    const formattedPassword = `${password.substring(0, 4)}-${password.substring(4, 6)}-${password.substring(6, 8)}`;
+    const formattedPassword = `${parseInt(password.substring(0, 4), 10)}/` + 
+                              `${parseInt(password.substring(4, 6), 10)}/` + 
+                              `${parseInt(password.substring(6, 8), 10)}`;
     console.log(`userId: ${userId}, formattedPassword: ${formattedPassword}`);
     
     try {

@@ -19,7 +19,7 @@ function home() {
     >
       <div className="game-container">
         <h1>Office Escape</h1>
-        <Link to="/Login">
+        <Link to="/login">
         <button className="play-button">Play</button>
         </Link>
       </div>

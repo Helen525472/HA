@@ -35,14 +35,18 @@ const pictureRoutes = require('./routes/picture');
 const nickRoutes = require('./routes/nick');
 // const dashRoutes = require('./routes/dashboard');
 // const expRoutes = require('./routes/experience');
+const sbreakroomRoutes = require('./routes/sbreakroom');
+//const ebreakroomRoutes = require('./routes/ebreakroom');
 
 // 使用路由
 app.use('/api/user', userRoutes);
 app.use('/api/auth', authRoutes);
 app.use('/api/picture', pictureRoutes);
-app.use('/api/nickname', nickRoutes);
+app.use('/api/nick', nickRoutes);
 // app.use('/api/dashboard', dashRoutes);
 // app.use('/api/experience', expRoutes);
+app.use('/api/sbreakroom', sbreakroomRoutes);
+//app.use('/api/ebreakroom', ebreakroomRoutes);
 
 // 啟動服務器
 app.listen(3001, () => {
