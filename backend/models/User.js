@@ -9,6 +9,10 @@ const userSchema = new mongoose.Schema({
   Level: { type: Number, default: 1 },
   Experience: { type: Number, default: 0 },
   TotalExperience: Number,
+  First_Name: String,
+  Last_Name: String,
+  Department: String,
+  Position: String,
   Answer_ques: Number,
   signin:{ type: Number, default: 0},
   redeemedGifts: [

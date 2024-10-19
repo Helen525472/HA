@@ -1,0 +1,142 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.anonymous-encouragement {
+    flex: 1;
+    display: flex;
+    padding: 20px;
+    border-bottom: 2px solid #000;
+}
+
+.message-list {
+    flex: 1;
+    overflow-y: auto;
+    border-right: 1px solid #ccc;
+    padding-right: 20px;
+    font-family: 'Luckiest Guy', sans-serif;
+}
+
+.message {
+    margin-bottom: 15px;
+    padding: 10px;
+    background-color: #f0f0f0;
+    border-radius: 5px;
+}
+
+.message-points {
+    font-weight: bold;
+}
+
+.employee-checker {
+    width: 300px;
+    margin-left: 20px;
+}
+
+.input-group {
+    margin-bottom: 10px;
+}
+
+.input-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-family: 'Luckiest Guy', sans-serif;
+}
+
+.input-group input, .input-group textarea {
+    width: 100%;
+    padding: 5px;
+    font-family: 'Luckiest Guy', sans-serif;
+}
+
+.department-section {
+    flex: 1;
+    display: flex;
+    padding: 20px;
+    overflow-y: auto;
+}
+
+.employee-list {
+    list-style-type: none;
+    padding: 0;
+    margin-right: 20px;
+    flex: 1;
+    font-family: 'Luckiest Guy', sans-serif;
+}
+
+.employee-item {
+    margin-bottom: 5px;
+}
+
+.tabs {
+    display: flex;
+    margin-bottom: 20px;
+}
+
+.tab {
+    padding: 10px 20px;
+    cursor: pointer;
+    background-color: #f0f0f0;
+    border: 1px solid #ccc;
+}
+
+.tab.active {
+    background-color: #fff;
+    border-bottom: none;
+}
+
+.tab-content {
+    display: none;
+    padding: 20px;
+    border: 1px solid #ccc;
+    flex: 1;
+    font-family: 'Luckiest Guy', sans-serif;
+}
+
+.tab-content.active {
+    display: block;
+}
+
+button {
+    background-color: #c9286a;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+button:hover {
+    background-color: #c9286a;
+}
+
+h1 {
+    text-align: center;
+    padding: 10px 0;
+    margin: 0;
+    border-bottom: 2px solid #000;
+}
+
+h2 {
+    text-align: center;
+    padding: 10px 0;
+    margin: 0;
+    border-bottom: 2px solid #000;
+    font-family: 'Luckiest Guy', sans-serif;
+}
+
+.scroll-container {
+    height: calc(100vh - 50px); /* Adjust based on your header height */
+    overflow-y: auto;
+}
