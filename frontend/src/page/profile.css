@@ -1,0 +1,108 @@
+
+.profile-container {
+    width: 90%; /* 擴大主要容器寬度 */
+    height: 90vh;
+    background-color: #4c2a85;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .home-icon img {
+    width: 30px;
+    cursor: pointer;
+  }
+  
+  .profile-header {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 20px;
+  }
+  
+  .profile-avatar {
+    width: 110px;
+    height: 110px;
+    object-fit: cover;
+    margin-bottom: 15px;
+    background-color: #ff999a; 
+    border-radius: 10px;
+    border: 40px solid #ff999a; 
+  }
+  
+  .profile-info h2 {
+    font-size: 64px; /* 增大暱稱字體 */
+    margin: 0;
+    color: white;
+  }
+  
+  .profile-info p {
+    font-size: 32px; /* 增大等級和經驗值字體 */
+    margin: 5px 0;
+    color: white;
+  }
+  
+  .tabs {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 15px;
+  }
+  
+  .tab-button {
+    background-color: #4c2a85;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
+    border: none;
+    padding: 15px 30px; /* 增大按鈕的內邊距 */
+    border-radius: 10px;
+    cursor: pointer;
+    color: white;
+    font-weight: bold;
+    font-size: 18px; /* 增大按鈕字體 */
+  }
+  
+  .tab-button.active {
+    background-color: #6b4ca0;
+  }
+  
+  .usage-container {
+    background-color: white;
+    color: black;
+    padding: 20px 100px;
+    font-size: 18px; /* 增大使用方式的文字 */
+    border-radius: 10px;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+    line-height: 1.6; /* 增加行間距 */
+  }
+  
+  .record-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 18px; /* 增大表格字體 */
+  }
+  
+  .record-table td {
+    padding: 10px 120px; /* 增加表格內邊距 */
+    border: 0px solid #4c2a85;
+    text-align: center;
+  }
+
+  /* 表頭樣式 */
+.record-table th {
+    background-color: #6b4ca0; /* 深紫色表頭 */
+    color: white;
+    padding: 10px 120px;
+    text-align: center;
+  }
+  
+  /* 偶數行 */
+  .record-table tr:nth-child(even) td {
+    background-color: #e0d4f7; /* 淡紫色背景 */
+  }
+  
+  /* 奇數行 */
+  .record-table tr:nth-child(odd) td {
+    background-color: #d3bde6; /* 稍深的淡紫色 */
+  }

@@ -6,14 +6,13 @@ import './tsmcard.css';
 function Tsmcard() {
   // State
   const [messages, setMessages] = useState([]);
-  const [newQuestion, setNewQuestion] = useState('');
   const [user, setUser] = useState(null);
+  const [userId, setUserId] = useState(null);  // 添加這行
   const [currentSection, setCurrentSection] = useState('home');
   const [currentCategory, setCurrentCategory] = useState('all');
   const [sortOrder, setSortOrder] = useState('newest');
   const [replyingTo, setReplyingTo] = useState(null);
   const [newAnswer, setNewAnswer] = useState('');
-  const [showQuestionForm, setShowQuestionForm] = useState(false);
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [showCategories, setShowCategories] = useState(false);
@@ -22,38 +21,42 @@ function Tsmcard() {
   const [currentType, setCurrentType] = useState('all');
   const [expandedProblem, setExpandedProblem] = useState(null);
   const [isQuestionModalOpen, setIsQuestionModalOpen] = useState(false);
+  const [isNewEmployee, setIsNewEmployee] = useState(false);
+  const [isAnswerModalOpen, setIsAnswerModalOpen] = useState(false);
+  const [currentProblemId, setCurrentProblemId] = useState(null);
   
   const navigate = useNavigate();
 
   // Fetch User Info and Messages
   useEffect(() => {
-    console.log('useEffect triggered. currentType:', currentType, 'sortOrder:', sortOrder);
     fetchUserInfo();
-    //fetchMessages();
     fetchProblems();
+    fetchUserId();
   }, [currentSection, currentCategory, currentType,sortOrder]);
   
   const fetchUserInfo = async () => {
-    console.log('Fetching user info...');
     try {
-      const response = await fetch('http://localhost:3001/api/user', {
+      const response = await fetch('http://localhost:3001/api/user/check-new-employee', {
         method: 'GET',
-        credentials: 'include'
+        credentials: 'include',
       });
-      if (response.ok) {
-        const data = await response.json();
-        console.log('User info received:', data);
-        setUser(data);
-      } else {
-        console.error('Failed to fetch user info:', response.status);
+      
+      if (!response.ok) {
+        throw new Error('Failed to fetch user info');
       }
+      
+      const userData = await response.json();
+      console.log('獲取到的用戶數據:', userData);
+      
+      setUser(userData);
+      
+      setIsNewEmployee(userData.isNewEmployee);
     } catch (error) {
-      console.error('Error fetching user info:', error);
+      console.error('獲取用戶信息時出錯:', error);
     }
   };
 
   const fetchProblems = async () => {
-    //console.log('Fetching problems. Type:', currentType, 'Sort:', sortOrder);
     try {
       const response = await fetch(`http://localhost:3001/api/problem?type=${currentType}&sort=${sortOrder}`, {
         method: 'GET',
@@ -61,7 +64,6 @@ function Tsmcard() {
       });
       if (response.ok) {
         const data = await response.json();
-        //console.log('Problems received:', data);
         setProblems(data);
       } else {
         console.error('Failed to fetch problems:', response.status);
@@ -72,29 +74,20 @@ function Tsmcard() {
   };
 
   const handleTypeChange = (type) => {
-    console.log('Type changed to:', type);
+    //console.log('Type changed to:', type);
     setCurrentType(type);
     setShowCategories(false);
   };
 
   const toggleSortOrder = () => {
     const newSortOrder = sortOrder === 'newest' ? 'oldest' : 'newest';
-    console.log('Sort order changed to:', newSortOrder);
+    //console.log('Sort order changed to:', newSortOrder);
     setSortOrder(newSortOrder);
     //setSortOrder(prevOrder => prevOrder === 'newest' ? 'oldest' : 'newest');
   };
 
-  const fetchMessages = async () => {
-    try {
-      const response = await axios.get(`/api/messages?category=${currentCategory}`);
-      setMessages(response.data);
-    } catch (error) {
-      console.error('Error fetching messages:', error);
-    }
-  };
-
   const toggleProblemExpansion = async (problemId) => {
-    console.log('Toggling problem expansion for problemId:', problemId);
+    //console.log('Toggling problem expansion for problemId:', problemId);
     const problem = problems.find(p => p._id === problemId);
     if (problem && problem.Answer > 0) {
       if (expandedProblem === problemId) {
@@ -111,7 +104,7 @@ function Tsmcard() {
   };
 
  const fetchAnswers = async (problemId) => {
-  console.log('Fetching answers for problemId:', problemId);
+  //console.log('Fetching answers for problemId:', problemId);
     try {
       const response = await fetch(`http://localhost:3001/api/problem/${problemId}/answers`, {
         method: 'GET',
@@ -119,7 +112,7 @@ function Tsmcard() {
       });
       if (response.ok) {
         const data = await response.json();
-        console.log('Answers received:', data);
+        //console.log('Answers received:', data);
         setProblemAnswers(prev => ({ ...prev, [problemId]: data }));
       } else {
         console.error('Failed to fetch answers:', response.status);
@@ -130,47 +123,76 @@ function Tsmcard() {
   };
 
 
-
-
-  // Handlers
-  const handleQuestionSubmit = async (questionContent, questionType) => {
-    if (user && user.isNewEmployee) {
-      try {
-        const response = await fetch('http://localhost:3001/api/problem', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          credentials: 'include',
-          body: JSON.stringify({
-            Problem: questionContent,
-            Type: questionType,
-          }),
-        });
-        if (response.ok) {
-          setIsQuestionModalOpen(false);
-          fetchProblems(); // 重新獲取問題列表
-        } else {
-          console.error('Failed to submit question:', response.status);
-        }
-      } catch (error) {
-        console.error('Error submitting question:', error);
-      }
+  const handleAskQuestion = () => {
+    console.log('handleAskQuestion 被調用');
+    console.log('isNewEmployee:', isNewEmployee);
+    if (isNewEmployee) {
+      console.log('打開問題模態框');
+      setIsQuestionModalOpen(true);
     } else {
       alert('只有新進員工可以提問');
     }
   };
 
-  const handleAnswerSubmit = async (questionId) => {
+
+  // Handlers
+  const handleQuestionSubmit = async (content, type) => {
     try {
-      await axios.post(`/api/messages/${questionId}/answers`, { content: newAnswer });
-      fetchMessages();
-      setNewAnswer('');
-      setReplyingTo(null);
+      const response = await axios.post('http://localhost:3001/api/problem', {
+        content,
+        type,
+      }, {
+        withCredentials: true
+      });
+      if (response.status === 201) {
+        alert('問題提交成功！');
+        setIsQuestionModalOpen(false);
+        // 可能需要刷新問題列表
+      }
     } catch (error) {
-      console.error('Error submitting answer:', error);
+      console.error('提交問題時出錯:', error);
+      alert('提交問題失敗，請稍後再試。');
     }
   };
+
+  const fetchUserId = async () => {
+    try {
+      const response = await axios.get('http://localhost:3001/api/user/id', {
+        withCredentials: true
+      });
+      setUserId(response.data.userId);
+    } catch (error) {
+      console.error('獲取用戶 ID 失敗:', error);
+    }
+  };
+
+  const handleAnswerClick = (problemId) => {
+    console.log('點擊回答按鈕，問題ID:', problemId);
+    setCurrentProblemId(problemId);
+    setIsAnswerModalOpen(true);
+  };
+
+  const handleAnswerSubmit = async (content) => {
+    console.log('提交回答，問題ID:', currentProblemId, '回答內容:', content);
+    if (!userId) {
+      alert('未能獲取用戶 ID，請重新登錄');
+      return;
+    }
+    try {
+      const response = await axios.post(`http://localhost:3001/api/problem/${currentProblemId}/answers`, 
+        { content, Employee_ID: userId },
+        { withCredentials: true }
+      );
+      console.log('回答提交成功，服務器響應:', response.data);
+      setIsAnswerModalOpen(false);
+      fetchProblems(); // 重新獲取問題列表以更新回答數
+      alert('回答提交成功！');
+    } catch (error) {
+      console.error('提交回答時出錯:', error);
+      alert('提交回答失敗，請稍後再試。');
+    }
+  };
+
 
   const handleEdit = (messageId) => {
     // Implement edit functionality if needed
@@ -193,15 +215,6 @@ function Tsmcard() {
 
   return (
     <div className="message-board-container">
-      {/* Top Bar */}
-      <div className="top-bar">
-        {user && (
-          <div className="user-info">
-            <span>暱稱: {user.nickname}</span>
-            <span>員工編號: {user.employeeId}</span>
-          </div>
-        )}
-      </div>
       
       {/* Main Container */}
       <div className="tsmcard-container">
@@ -229,14 +242,12 @@ function Tsmcard() {
           <div className="header-section">
             <h2>{currentType === 'all' ? '論壇首頁' : currentType}</h2>
             {currentType !== 'all' && (
-              <button 
-                onClick={() => setShowQuestionForm(!showQuestionForm)}
-                className="ask-question-button"
-              >
+              <button onClick={handleAskQuestion} className="ask-question-button">
                 我要提問
               </button>
             )}
           </div>
+            
         
           {currentType === 'all' ? (
             <div className="forum-home">
@@ -248,39 +259,30 @@ function Tsmcard() {
               <button onClick={toggleSortOrder}>
                 {sortOrder === 'newest' ? '最新到最舊 ▼' : '最舊到最新 ▲'}
               </button>
-              {showQuestionForm && (
-                <div className="question-form">
-                  {user && user.isNewEmployee ? (
-                    <form onSubmit={handleQuestionSubmit}>
-                      <textarea
-                        value={newQuestion}
-                        onChange={(e) => setNewQuestion(e.target.value)}
-                        placeholder="請輸入您的問題"
-                        required
-                      />
-                      <button type="submit">提交問題</button>
-                      <button type="button" onClick={() => setShowQuestionForm(false)}>取消</button>
-                    </form>
-                  ) : (
-                    <p>只有新進員工可以提問</p>
-                  )}
-                </div>
-            )}
-
-
-
+              
               <div className="problems-list">
               {problems.map((problem) => (
                 <div key={problem._id} className="problem-item">
+                  <div className="problem-content">
                   <button 
-                    onClick={() => toggleProblemExpansion(problem._id)}
-                    className={`problem-button ${problem.Answer === 0 ? 'disabled' : ''}`}
-                    disabled={problem.Answer === 0}
+                    className="answer-button" 
+                    onClick={() => handleAnswerClick(problem._id)}
                   >
-                    <h3>{problem.Problem}</h3>
-                    <p>發布日期: {problem.Launch_Date}</p>
-                    <p>回答數: {problem.Answer}</p>
+                    回答
                   </button>
+                  <div className="problem-details">
+                    <button 
+                      onClick={() => toggleProblemExpansion(problem._id)}
+                      className={`problem-button ${problem.Answer === 0 ? 'disabled' : ''}`}
+                      disabled={problem.Answer === 0}
+                    >
+                      <h3>{problem.Problem}</h3>
+                      <p>發布日期: {problem.Launch_Date}</p>
+                      <p>回答數: {problem.Answer}</p>
+                      
+                    </button>
+                  </div>
+                  </div>
                   {expandedProblem === problem._id && (
                     <div className="answers-section">
                       {problemAnswers[problem._id] === undefined ? (
@@ -298,20 +300,31 @@ function Tsmcard() {
                 </div>
               ))}
               </div>
+              {isQuestionModalOpen && (
+                <QuestionModal
+                  isOpen={isQuestionModalOpen}
+                  onClose={() => {
+                    console.log('關閉問題模態框');
+                    setIsQuestionModalOpen(false);
+                  }}
+                  onSubmit={handleQuestionSubmit}
+                />
+              )}
+              {isAnswerModalOpen && (
+                <AnswerModal
+                  isOpen={isAnswerModalOpen}
+                  onClose={() => setIsAnswerModalOpen(false)}
+                  onSubmit={handleAnswerSubmit}
+                />
+              )}
             </>
           )}
         </div>
-        <QuestionModal
-          isOpen={isQuestionModalOpen}
-          onClose={() => setIsQuestionModalOpen(false)}
-          onSubmit={handleQuestionSubmit}
-        />
       </div>
     </div>
   );
 }
 
-// QuestionModal 組件定義
 function QuestionModal({ isOpen, onClose, onSubmit }) {
   const [questionContent, setQuestionContent] = useState('');
   const [questionType, setQuestionType] = useState('閒聊');
@@ -321,6 +334,7 @@ function QuestionModal({ isOpen, onClose, onSubmit }) {
     onSubmit(questionContent, questionType);
     setQuestionContent('');
     setQuestionType('閒聊');
+    onClose();
   };
 
   if (!isOpen) return null;
@@ -355,6 +369,41 @@ function QuestionModal({ isOpen, onClose, onSubmit }) {
   );
 }
 
+function AnswerModal({ isOpen, onClose, onSubmit }) {
+  const [answerContent, setAnswerContent] = useState('');
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log('在模態框中提交回答，內容:', answerContent);
+    onSubmit(answerContent);
+    setAnswerContent('');
+  };
+
+  if (!isOpen) return null;
+
+  return (
+    <div className="modal-overlay">
+      <div className="modal-content">
+        <h2>提交回答</h2>
+        <form onSubmit={handleSubmit}>
+          <textarea
+            value={answerContent}
+            onChange={(e) => {
+              //console.log('回答內容變更:', e.target.value);
+              setAnswerContent(e.target.value);
+            }}
+            placeholder="請輸入您的回答"
+            required
+          />
+          <div className="modal-buttons">
+            <button type="submit">提交</button>
+            <button type="button" onClick={onClose}>取消</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  );
+}
 
 
 export default Tsmcard;

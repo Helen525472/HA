@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import './home.css';
-//更改測試點
+
 function home() {
   return (
     <div
@@ -19,7 +19,7 @@ function home() {
     >
       <div className="game-container">
         <h1>Office Escape</h1>
-        <Link to="/Village">  
+        <Link to="/Login">
         <button className="play-button">Play</button>
         </Link>
       </div>

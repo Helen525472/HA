@@ -33,8 +33,11 @@ const userRoutes = require('./routes/user');
 const authRoutes = require('./routes/auth');
 const pictureRoutes = require('./routes/picture');
 const nickRoutes = require('./routes/nick');
-// const dashRoutes = require('./routes/dashboard');
-// const expRoutes = require('./routes/experience');
+const dashRoutes = require('./routes/dashboard');
+const giftRoutes = require('./routes/gifts');
+const expressRoutes = require('./routes/express');
+const quesRoutes = require('./routes/ques');
+const expRoutes = require('./routes/experience');
 const senpaiRoutes = require('./routes/senpai');
 const problemRoutes = require('./routes/problem');
 
@@ -42,19 +45,16 @@ const problemRoutes = require('./routes/problem');
 app.use('/api/user', userRoutes);
 app.use('/api/auth', authRoutes);
 app.use('/api/picture', pictureRoutes);
-app.use('/api/nickname', nickRoutes);
-// app.use('/api/dashboard', dashRoutes);
-// app.use('/api/experience', expRoutes);
+app.use('/api/nick', nickRoutes);
+app.use('/api/dashboard', dashRoutes);
+app.use('/api/gifts', giftRoutes);
+app.use('/api/express', expressRoutes);
+app.use('/api/ques', quesRoutes)
+app.use('/api/experience',expRoutes)
 app.use('/api/senpai', senpaiRoutes);
 app.use('/api/problem', problemRoutes);
 
 // 啟動服務器
 app.listen(3001, () => {
   console.log('Server is running on port 3001');
-});
-
-// 錯誤處理中間件->備用
-app.use((err, req, res, next) => {
-  console.error(err.stack);
-  res.status(500).send('Something broke!');
 });

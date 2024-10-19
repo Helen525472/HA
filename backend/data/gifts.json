@@ -1,0 +1,702 @@
+[
+  {
+    "name": "旅遊折扣券",
+    "expsRequired": 260,
+    "description": "此旅遊優惠可折抵國內任意住宿500元。",
+    "location": "行銷部門（8樓A區）",
+    "expirationDate": "2025-07-15"
+  },
+  {
+    "name": "健身房會員月卡",
+    "expsRequired": 270,
+    "description": "此健身房月卡適用於全台Anytime Fitness分店。",
+    "location": "行銷部門（8樓A區）",
+    "expirationDate": "2025-09-08"
+  },
+  {
+    "name": "音樂會門票",
+    "expsRequired": 500,
+    "description": "您獲得了一張周末音樂會門票，位置需提前確認。",
+    "location": "總部1號大樓人資部門",
+    "expirationDate": "2025-06-23"
+  },
+  {
+    "name": "餐廳餐券",
+    "expsRequired": 460,
+    "description": "此餐券適用於王品集團餐廳，可享單人套餐優惠。",
+    "location": "資訊管理中心（C棟3樓）",
+    "expirationDate": "2025-03-04"
+  },
+  {
+    "name": "文具購物卡",
+    "expsRequired": 300,
+    "description": "此禮物券可於特力屋購買指定家居用品。",
+    "location": "總部1號大樓人資部門",
+    "expirationDate": "2024-12-07"
+  },
+  {
+    "name": "按摩館服務券",
+    "expsRequired": 450,
+    "description": "此按摩券可於紓壓館享有一次全身按摩。",
+    "location": "員工福利中心（B棟5樓）",
+    "expirationDate": "2025-05-18"
+  },
+  {
+    "name": "寵物用品券",
+    "expsRequired": 80,
+    "description": "兌換此券享有寵物美容一次，需提前預約。",
+    "location": "財務部門（5樓B區）",
+    "expirationDate": "2025-10-01"
+  },
+  {
+    "name": "文具購物卡",
+    "expsRequired": 240,
+    "description": "此禮物券可於特力屋購買指定家居用品。",
+    "location": "財務部門（5樓B區）",
+    "expirationDate": "2025-04-11"
+  },
+  {
+    "name": "音樂會門票",
+    "expsRequired": 320,
+    "description": "您獲得了一張周末音樂會門票，位置需提前確認。",
+    "location": "行政辦公室（3樓D區）",
+    "expirationDate": "2025-09-25"
+  },
+  {
+    "name": "咖啡店免費飲品",
+    "expsRequired": 380,
+    "description": "兌換此券享有星巴克指定飲品免費。",
+    "location": "資訊管理中心（C棟3樓）",
+    "expirationDate": null
+  },
+  {
+    "name": "免費洗車服務",
+    "expsRequired": 380,
+    "description": "兌換此券享有指定汽車保養服務。",
+    "location": "財務部門（5樓B區）",
+    "expirationDate": "2025-05-27"
+  },
+  {
+    "name": "餐廳餐券",
+    "expsRequired": 150,
+    "description": "此餐券適用於饗食天堂，可折抵一人份下午茶。",
+    "location": "總部會議室C1區（4樓）",
+    "expirationDate": "2025-05-08"
+  },
+  {
+    "name": "寵物用品券",
+    "expsRequired": 380,
+    "description": "兌換此券享有寵物美容一次，需提前預約。",
+    "location": "總部會議室C1區（4樓）",
+    "expirationDate": null
+  },
+  {
+    "name": "寵物用品券",
+    "expsRequired": 400,
+    "description": "兌換此券享有寵物美容一次，需提前預約。",
+    "location": "財務部門（5樓B區）",
+    "expirationDate": "2025-01-09"
+  },
+  {
+    "name": "寵物用品券",
+    "expsRequired": 330,
+    "description": "兌換此券享有寵物美容一次，需提前預約。",
+    "location": "郵寄至登記地址（填寫地址後3日內寄出）",
+    "expirationDate": "2025-07-14"
+  },
+  {
+    "name": "遊戲商城點數",
+    "expsRequired": 250,
+    "description": "此點數適用於PlayStation商城，購買任意遊戲。",
+    "location": "資訊管理中心（C棟3樓）",
+    "expirationDate": "2025-08-31"
+  },
+  {
+    "name": "按摩館服務券",
+    "expsRequired": 220,
+    "description": "此按摩券可於紓壓館享有一次全身按摩。",
+    "location": "總部會議室C1區（4樓）",
+    "expirationDate": "2025-05-01"
+  },
+  {
+    "name": "購物折價券",
+    "expsRequired": 180,
+    "description": "此購物卡可於新光三越各樓層使用，無需找零。",
+    "location": "總部會議室C1區（4樓）",
+    "expirationDate": null
+  },
+  {
+    "name": "購物折價券",
+    "expsRequired": 240,
+    "description": "此購物卡可於新光三越各樓層使用，無需找零。",
+    "location": "總部會議室C1區（4樓）",
+    "expirationDate": "2025-03-11"
+  },
+  {
+    "name": "文具購物卡",
+    "expsRequired": 330,
+    "description": "此禮物券可於特力屋購買指定家居用品。",
+    "location": "總部1號大樓人資部門",
+    "expirationDate": "2025-04-14"
+  },
+  {
+    "name": "健身房會員月卡",
+    "expsRequired": 290,
+    "description": "此健身房月卡適用於全台Anytime Fitness分店。",
+    "location": "總部1號大樓人資部門",
+    "expirationDate": "2025-02-23"
+  },
+  {
+    "name": "文具購物卡",
+    "expsRequired": 250,
+    "description": "此禮物券可於特力屋購買指定家居用品。",
+    "location": "客服櫃檯（A棟2樓）",
+    "expirationDate": "2025-09-10"
+  },
+  {
+    "name": "博物館門票",
+    "expsRequired": 170,
+    "description": "此票券可於台北動物園入園使用，有效期一年。",
+    "location": "資訊管理中心（C棟3樓）",
+    "expirationDate": "2025-02-16"
+  },
+  {
+    "name": "音樂會門票",
+    "expsRequired": 260,
+    "description": "您獲得了一張周末音樂會門票，位置需提前確認。",
+    "location": "客服櫃檯（A棟2樓）",
+    "expirationDate": null
+  },
+  {
+    "name": "餐廳餐券",
+    "expsRequired": 400,
+    "description": "您可於王品餐廳任一分店兌換午餐折扣。",
+    "location": "總部1號大樓人資部門",
+    "expirationDate": "2025-09-23"
+  },
+  {
+    "name": "美髮服務券",
+    "expsRequired": 260,
+    "description": "憑此券可於美髮沙龍免費體驗洗髮及護理。",
+    "location": "總部1號大樓人資部門",
+    "expirationDate": "2024-12-18"
+  },
+  {
+    "name": "休假機會",
+    "expsRequired": 500,
+    "description": "您獲得了一日特休假，需提前與人資部門登記使用。",
+    "location": "行政辦公室（3樓D區）",
+    "expirationDate": null
+  },
+  {
+    "name": "美術展門票",
+    "expsRequired": 500,
+    "description": "此優惠適用於全台國美館展覽，憑券免費入場。",
+    "location": "人資辦公室（2樓A區）",
+    "expirationDate": null
+  },
+  {
+    "name": "購物折價券",
+    "expsRequired": 480,
+    "description": "此購物卡可於新光三越各樓層使用，無需找零。",
+    "location": "行政辦公室（3樓D區）",
+    "expirationDate": "2025-06-19"
+  },
+  {
+    "name": "餐廳餐券",
+    "expsRequired": 60,
+    "description": "您可於王品餐廳任一分店兌換午餐折扣。",
+    "location": "郵寄至登記地址（填寫地址後3日內寄出）",
+    "expirationDate": "2024-12-03"
+  },
+  {
+    "name": "寵物用品券",
+    "expsRequired": 140,
+    "description": "兌換此券享有寵物美容一次，需提前預約。",
+    "location": "郵寄至登記地址（填寫地址後3日內寄出）",
+    "expirationDate": null
+  },
+  {
+    "name": "音樂會門票",
+    "expsRequired": 380,
+    "description": "您獲得了一張周末音樂會門票，位置需提前確認。",
+    "location": "郵寄至登記地址（填寫地址後3日內寄出）",
+    "expirationDate": "2025-07-30"
+  },
+  {
+    "name": "按摩館服務券",
+    "expsRequired": 360,
+    "description": "此按摩券可於紓壓館享有一次全身按摩。",
+    "location": "總部1號大樓人資部門",
+    "expirationDate": "2025-09-08"
+  },
+  {
+    "name": "遊戲商城點數",
+    "expsRequired": 330,
+    "description": "此點數適用於PlayStation商城，購買任意遊戲。",
+    "location": "財務部門（5樓B區）",
+    "expirationDate": "2024-12-16"
+  },
+  {
+    "name": "購物折價券",
+    "expsRequired": 440,
+    "description": "此購物卡可於新光三越各樓層使用，無需找零。",
+    "location": "總部會議室C1區（4樓）",
+    "expirationDate": "2025-06-01"
+  },
+  {
+    "name": "餐廳餐券",
+    "expsRequired": 270,
+    "description": "此餐券適用於王品集團餐廳，可享單人套餐優惠。",
+    "location": "人資辦公室（2樓A區）",
+    "expirationDate": "2025-02-09"
+  },
+  {
+    "name": "購物折價券",
+    "expsRequired": 440,
+    "description": "此購物卡可於新光三越各樓層使用，無需找零。",
+    "location": "人資辦公室（2樓A區）",
+    "expirationDate": null
+  },
+  {
+    "name": "餐廳餐券",
+    "expsRequired": 430,
+    "description": "此餐券適用於饗食天堂，可折抵一人份下午茶。",
+    "location": "財務部門（5樓B區）",
+    "expirationDate": "2025-06-14"
+  },
+  {
+    "name": "餐廳餐券",
+    "expsRequired": 440,
+    "description": "此餐券適用於王品集團餐廳，可享單人套餐優惠。",
+    "location": "總部會議室C1區（4樓）",
+    "expirationDate": null
+  },
+  {
+    "name": "電影票",
+    "expsRequired": 380,
+    "description": "此電影票可於各大影城觀賞任一2D電影。",
+    "location": "財務部門（5樓B區）",
+    "expirationDate": "2024-12-22"
+  },
+  {
+    "name": "美術展門票",
+    "expsRequired": 50,
+    "description": "此優惠適用於全台國美館展覽，憑券免費入場。",
+    "location": "資訊管理中心（C棟3樓）",
+    "expirationDate": "2025-02-21"
+  },
+  {
+    "name": "購物折價券",
+    "expsRequired": 480,
+    "description": "此購物卡可於新光三越各樓層使用，無需找零。",
+    "location": "員工福利中心（B棟5樓）",
+    "expirationDate": "2025-03-13"
+  },
+  {
+    "name": "按摩館服務券",
+    "expsRequired": 350,
+    "description": "此按摩券可於紓壓館享有一次全身按摩。",
+    "location": "員工福利中心（B棟5樓）",
+    "expirationDate": "2025-02-19"
+  },
+  {
+    "name": "餐廳餐券",
+    "expsRequired": 220,
+    "description": "此餐券適用於饗食天堂，可折抵一人份下午茶。",
+    "location": "郵寄至登記地址（填寫地址後3日內寄出）",
+    "expirationDate": "2025-01-28"
+  },
+  {
+    "name": "遊戲商城點數",
+    "expsRequired": 220,
+    "description": "此點數適用於PlayStation商城，購買任意遊戲。",
+    "location": "行政辦公室（3樓D區）",
+    "expirationDate": "2024-12-11"
+  },
+  {
+    "name": "購物折價券",
+    "expsRequired": 460,
+    "description": "此購物卡可於新光三越各樓層使用，無需找零。",
+    "location": "總部會議室C1區（4樓）",
+    "expirationDate": "2025-07-27"
+  },
+  {
+    "name": "餐廳餐券",
+    "expsRequired": 350,
+    "description": "您可於王品餐廳任一分店兌換午餐折扣。",
+    "location": "人資辦公室（2樓A區）",
+    "expirationDate": "2025-06-20"
+  },
+  {
+    "name": "電影票",
+    "expsRequired": 20,
+    "description": "此電影票可於各大影城觀賞任一2D電影。",
+    "location": "總部會議室C1區（4樓）",
+    "expirationDate": "2025-07-28"
+  },
+  {
+    "name": "旅遊折扣券",
+    "expsRequired": 290,
+    "description": "此旅遊優惠可折抵國內任意住宿500元。",
+    "location": "財務部門（5樓B區）",
+    "expirationDate": "2025-01-24"
+  },
+  {
+    "name": "博物館門票",
+    "expsRequired": 290,
+    "description": "此票券可於台北動物園入園使用，有效期一年。",
+    "location": "總部會議室C1區（4樓）",
+    "expirationDate": "2025-08-16"
+  },
+  {
+    "name": "超商禮物卡",
+    "expsRequired": 470,
+    "description": "此禮物卡可於指定超商購物使用，無需找零。",
+    "location": "財務部門（5樓B區）",
+    "expirationDate": "2025-09-11"
+  },
+  {
+    "name": "文具購物卡",
+    "expsRequired": 20,
+    "description": "此禮物券可於特力屋購買指定家居用品。",
+    "location": "行政辦公室（3樓D區）",
+    "expirationDate": "2025-05-16"
+  },
+  {
+    "name": "音樂會門票",
+    "expsRequired": 220,
+    "description": "您獲得了一張周末音樂會門票，位置需提前確認。",
+    "location": "總部1號大樓人資部門",
+    "expirationDate": "2025-06-04"
+  },
+  {
+    "name": "電子書折扣券",
+    "expsRequired": 400,
+    "description": "此折扣券可於誠品書店購物使用，折抵全館書籍。",
+    "location": "財務部門（5樓B區）",
+    "expirationDate": "2025-09-30"
+  },
+  {
+    "name": "休假機會",
+    "expsRequired": 130,
+    "description": "您獲得了一日特休假，需提前與人資部門登記使用。",
+    "location": "財務部門（5樓B區）",
+    "expirationDate": null
+  },
+  {
+    "name": "餐廳餐券",
+    "expsRequired": 150,
+    "description": "您可於王品餐廳任一分店兌換午餐折扣。",
+    "location": "人資辦公室（2樓A區）",
+    "expirationDate": "2025-08-30"
+  },
+  {
+    "name": "美術展門票",
+    "expsRequired": 500,
+    "description": "此優惠適用於全台國美館展覽，憑券免費入場。",
+    "location": "總部1號大樓人資部門",
+    "expirationDate": "2025-01-08"
+  },
+  {
+    "name": "博物館門票",
+    "expsRequired": 470,
+    "description": "此票券可於台北動物園入園使用，有效期一年。",
+    "location": "資訊管理中心（C棟3樓）",
+    "expirationDate": "2025-07-06"
+  },
+  {
+    "name": "餐廳餐券",
+    "expsRequired": 330,
+    "description": "此餐券適用於王品集團餐廳，可享單人套餐優惠。",
+    "location": "總部會議室C1區（4樓）",
+    "expirationDate": "2024-11-26"
+  },
+  {
+    "name": "咖啡店免費飲品",
+    "expsRequired": 220,
+    "description": "兌換此券享有星巴克指定飲品免費。",
+    "location": "郵寄至登記地址（填寫地址後3日內寄出）",
+    "expirationDate": "2025-04-19"
+  },
+  {
+    "name": "超商禮物卡",
+    "expsRequired": 190,
+    "description": "此禮物卡可於指定超商購物使用，無需找零。",
+    "location": "總部會議室C1區（4樓）",
+    "expirationDate": "2025-09-11"
+  },
+  {
+    "name": "餐廳餐券",
+    "expsRequired": 180,
+    "description": "您可於王品餐廳任一分店兌換午餐折扣。",
+    "location": "行銷部門（8樓A區）",
+    "expirationDate": "2025-07-20"
+  },
+  {
+    "name": "音樂會門票",
+    "expsRequired": 260,
+    "description": "您獲得了一張周末音樂會門票，位置需提前確認。",
+    "location": "人資辦公室（2樓A區）",
+    "expirationDate": "2025-01-15"
+  },
+  {
+    "name": "健身房會員月卡",
+    "expsRequired": 220,
+    "description": "此健身房月卡適用於全台Anytime Fitness分店。",
+    "location": "總部1號大樓人資部門",
+    "expirationDate": "2025-02-08"
+  },
+  {
+    "name": "旅遊折扣券",
+    "expsRequired": 160,
+    "description": "此旅遊優惠可折抵國內任意住宿500元。",
+    "location": "總部1號大樓人資部門",
+    "expirationDate": "2025-08-15"
+  },
+  {
+    "name": "按摩館服務券",
+    "expsRequired": 340,
+    "description": "此按摩券可於紓壓館享有一次全身按摩。",
+    "location": "總部會議室C1區（4樓）",
+    "expirationDate": null
+  },
+  {
+    "name": "博物館門票",
+    "expsRequired": 120,
+    "description": "此票券可於台北動物園入園使用，有效期一年。",
+    "location": "總部會議室C1區（4樓）",
+    "expirationDate": "2025-02-10"
+  },
+  {
+    "name": "餐廳餐券",
+    "expsRequired": 450,
+    "description": "此餐券適用於王品集團餐廳，可享單人套餐優惠。",
+    "location": "總部會議室C1區（4樓）",
+    "expirationDate": null
+  },
+  {
+    "name": "遊戲商城點數",
+    "expsRequired": 110,
+    "description": "此點數適用於PlayStation商城，購買任意遊戲。",
+    "location": "員工福利中心（B棟5樓）",
+    "expirationDate": "2025-07-01"
+  },
+  {
+    "name": "音樂會門票",
+    "expsRequired": 70,
+    "description": "您獲得了一張周末音樂會門票，位置需提前確認。",
+    "location": "人資辦公室（2樓A區）",
+    "expirationDate": "2025-06-20"
+  },
+  {
+    "name": "餐廳餐券",
+    "expsRequired": 440,
+    "description": "此餐券適用於王品集團餐廳，可享單人套餐優惠。",
+    "location": "財務部門（5樓B區）",
+    "expirationDate": "2025-08-30"
+  },
+  {
+    "name": "咖啡店免費飲品",
+    "expsRequired": 90,
+    "description": "兌換此券享有星巴克指定飲品免費。",
+    "location": "行銷部門（8樓A區）",
+    "expirationDate": "2024-12-15"
+  },
+  {
+    "name": "寵物用品券",
+    "expsRequired": 450,
+    "description": "兌換此券享有寵物美容一次，需提前預約。",
+    "location": "總部會議室C1區（4樓）",
+    "expirationDate": "2024-11-29"
+  },
+  {
+    "name": "美髮服務券",
+    "expsRequired": 140,
+    "description": "憑此券可於美髮沙龍免費體驗洗髮及護理。",
+    "location": "總部1號大樓人資部門",
+    "expirationDate": "2025-06-12"
+  },
+  {
+    "name": "健身房會員月卡",
+    "expsRequired": 190,
+    "description": "此健身房月卡適用於全台Anytime Fitness分店。",
+    "location": "資訊管理中心（C棟3樓）",
+    "expirationDate": "2025-07-26"
+  },
+  {
+    "name": "休假機會",
+    "expsRequired": 230,
+    "description": "您獲得了一日特休假，需提前與人資部門登記使用。",
+    "location": "員工福利中心（B棟5樓）",
+    "expirationDate": "2025-01-16"
+  },
+  {
+    "name": "免費洗車服務",
+    "expsRequired": 170,
+    "description": "兌換此券享有指定汽車保養服務。",
+    "location": "總部會議室C1區（4樓）",
+    "expirationDate": "2025-08-17"
+  },
+  {
+    "name": "健身房會員月卡",
+    "expsRequired": 490,
+    "description": "此健身房月卡適用於全台Anytime Fitness分店。",
+    "location": "行銷部門（8樓A區）",
+    "expirationDate": "2025-04-25"
+  },
+  {
+    "name": "餐廳餐券",
+    "expsRequired": 290,
+    "description": "此餐券適用於王品集團餐廳，可享單人套餐優惠。",
+    "location": "客服櫃檯（A棟2樓）",
+    "expirationDate": "2025-09-05"
+  },
+  {
+    "name": "休假機會",
+    "expsRequired": 20,
+    "description": "您獲得了一日特休假，需提前與人資部門登記使用。",
+    "location": "財務部門（5樓B區）",
+    "expirationDate": "2025-10-08"
+  },
+  {
+    "name": "文具購物卡",
+    "expsRequired": 220,
+    "description": "此禮物券可於特力屋購買指定家居用品。",
+    "location": "人資辦公室（2樓A區）",
+    "expirationDate": "2024-12-27"
+  },
+  {
+    "name": "遊戲商城點數",
+    "expsRequired": 290,
+    "description": "此點數適用於PlayStation商城，購買任意遊戲。",
+    "location": "總部1號大樓人資部門",
+    "expirationDate": "2024-12-16"
+  },
+  {
+    "name": "購物折價券",
+    "expsRequired": 270,
+    "description": "此購物卡可於新光三越各樓層使用，無需找零。",
+    "location": "總部1號大樓人資部門",
+    "expirationDate": "2024-12-03"
+  },
+  {
+    "name": "按摩館服務券",
+    "expsRequired": 490,
+    "description": "此按摩券可於紓壓館享有一次全身按摩。",
+    "location": "總部1號大樓人資部門",
+    "expirationDate": "2025-04-19"
+  },
+  {
+    "name": "文具購物卡",
+    "expsRequired": 160,
+    "description": "此禮物券可於特力屋購買指定家居用品。",
+    "location": "總部會議室C1區（4樓）",
+    "expirationDate": "2025-09-19"
+  },
+  {
+    "name": "寵物用品券",
+    "expsRequired": 230,
+    "description": "兌換此券享有寵物美容一次，需提前預約。",
+    "location": "員工福利中心（B棟5樓）",
+    "expirationDate": "2024-11-22"
+  },
+  {
+    "name": "旅遊折扣券",
+    "expsRequired": 500,
+    "description": "此旅遊優惠可折抵國內任意住宿500元。",
+    "location": "資訊管理中心（C棟3樓）",
+    "expirationDate": "2025-02-22"
+  },
+  {
+    "name": "超商禮物卡",
+    "expsRequired": 360,
+    "description": "此禮物卡可於指定超商購物使用，無需找零。",
+    "location": "財務部門（5樓B區）",
+    "expirationDate": "2025-07-12"
+  },
+  {
+    "name": "餐廳餐券",
+    "expsRequired": 140,
+    "description": "您可於王品餐廳任一分店兌換午餐折扣。",
+    "location": "員工福利中心（B棟5樓）",
+    "expirationDate": "2024-12-24"
+  },
+  {
+    "name": "寵物用品券",
+    "expsRequired": 450,
+    "description": "兌換此券享有寵物美容一次，需提前預約。",
+    "location": "總部會議室C1區（4樓）",
+    "expirationDate": null
+  },
+  {
+    "name": "文具購物卡",
+    "expsRequired": 150,
+    "description": "此禮物券可於特力屋購買指定家居用品。",
+    "location": "財務部門（5樓B區）",
+    "expirationDate": "2025-08-23"
+  },
+  {
+    "name": "旅遊折扣券",
+    "expsRequired": 60,
+    "description": "此旅遊優惠可折抵國內任意住宿500元。",
+    "location": "客服櫃檯（A棟2樓）",
+    "expirationDate": "2025-06-01"
+  },
+  {
+    "name": "電子書折扣券",
+    "expsRequired": 400,
+    "description": "此折扣券可於誠品書店購物使用，折抵全館書籍。",
+    "location": "人資辦公室（2樓A區）",
+    "expirationDate": "2025-03-17"
+  },
+  {
+    "name": "美術展門票",
+    "expsRequired": 160,
+    "description": "此優惠適用於全台國美館展覽，憑券免費入場。",
+    "location": "資訊管理中心（C棟3樓）",
+    "expirationDate": null
+  },
+  {
+    "name": "旅遊折扣券",
+    "expsRequired": 160,
+    "description": "此旅遊優惠可折抵國內任意住宿500元。",
+    "location": "行銷部門（8樓A區）",
+    "expirationDate": "2025-05-21"
+  },
+  {
+    "name": "音樂會門票",
+    "expsRequired": 250,
+    "description": "您獲得了一張周末音樂會門票，位置需提前確認。",
+    "location": "人資辦公室（2樓A區）",
+    "expirationDate": "2025-03-14"
+  },
+  {
+    "name": "美髮服務券",
+    "expsRequired": 280,
+    "description": "憑此券可於美髮沙龍免費體驗洗髮及護理。",
+    "location": "總部會議室C1區（4樓）",
+    "expirationDate": null
+  },
+  {
+    "name": "餐廳餐券",
+    "expsRequired": 340,
+    "description": "您可於王品餐廳任一分店兌換午餐折扣。",
+    "location": "人資辦公室（2樓A區）",
+    "expirationDate": "2025-07-08"
+  },
+  {
+    "name": "健身房會員月卡",
+    "expsRequired": 160,
+    "description": "此健身房月卡適用於全台Anytime Fitness分店。",
+    "location": "人資辦公室（2樓A區）",
+    "expirationDate": "2025-02-05"
+  },
+  {
+    "name": "寵物用品券",
+    "expsRequired": 310,
+    "description": "兌換此券享有寵物美容一次，需提前預約。",
+    "location": "財務部門（5樓B區）",
+    "expirationDate": "2025-01-19"
+  }
+]

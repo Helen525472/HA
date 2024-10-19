@@ -30,6 +30,13 @@ const AnswerSchema = new mongoose.Schema({
 // 添加一個複合索引來確保 ID 的唯一性
 AnswerSchema.index({ Problem_ID: 1, Answer_ID: 1 }, { unique: true });
 
+AnswerSchema.statics.findByProblemId = async function(problemId) {
+    console.log(`查找問題 ID 為 ${problemId} 的所有回答`);
+    const answers = await this.find({ Problem_ID: problemId });
+    console.log(`找到 ${answers.length} 個回答`);
+    return answers;
+  };
+
 // 在保存之前生成 ID
 AnswerSchema.pre('save', function(next) {
   if (this.isNew) {
