@@ -9,7 +9,7 @@ const sessionSECRET = process.env.SESSION_SECRET;
 const app = express();
 
 app.use(cors({
-  origin: 'http://localhost:3000',  
+  origin: process.env.CLIENT_URL || 'http://localhost:3000',  
   credentials: true 
 }));
 app.use(express.json());
@@ -57,6 +57,6 @@ app.use('/api/foods', foodRoutes);
 app.use('/api/sign', signRoutes);
 
 // 啟動服務器
-app.listen(3001, () => {
+app.listen(process.env.PORT || 3001, () => {
   console.log('Server is running on port 3001');
 });
