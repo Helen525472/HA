@@ -10,6 +10,12 @@ const userSchema = new mongoose.Schema({
   Experience: { type: Number, default: 0 },
   TotalExperience: Number,
 
+  redeemedGifts: [
+    {
+      giftName: String,
+      redeemedDate: Date,
+    },
+  ]
 }, { collection: 'EMPLOYEE' });
 
 const User = mongoose.model('User', userSchema);

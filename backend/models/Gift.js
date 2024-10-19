@@ -5,7 +5,7 @@ const giftSchema = new mongoose.Schema({
   expsRequired: Number,
   description: String,
   location: String,
-  expirationDate: Date,
+  expirationDate: String,
 }, { collection: 'GIFT' });
 
 const Gift = mongoose.model('Gift', giftSchema);
