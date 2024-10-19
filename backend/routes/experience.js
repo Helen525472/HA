@@ -69,5 +69,29 @@ router.post('/level-up', async (req, reply) => {
   }
 });
 
+router.post('/add', async (req, res) => {
+  try {
+      const { amount } = req.body; // 從請求體中獲取要增加的經驗值
+      const userId = req.session.userId; // 假設已通過身份驗證中間件獲取使用者 ID
+
+      console.log(amount);
+      console.log(userId);
+      
+      // 找到使用者並增加經驗值
+      const user = await User.findById(userId);
+      if (!user) {
+          return res.status(404).json({ message: '使用者不存在' });
+      }
+
+      user.Experience += amount; // 增加經驗值
+
+      await user.save(); // 儲存變更
+
+      res.status(200).json({ success: true, user });
+  } catch (error) {
+      console.error('Error updating experience:', error);
+      res.status(500).json({ message: '伺服器錯誤' });
+  }
+});
 module.exports = router;
 

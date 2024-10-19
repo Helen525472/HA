@@ -2,12 +2,13 @@ import React, { useEffect, useState } from 'react';
 import './dashboard.css';
 import playerImages from './playerImage'; 
 import { useNavigate } from 'react-router-dom';
+import Qa from './qa'; //引入每日一問
 
 const menuItems = [
   { label: '新手訓練村', route: 'training', image: '/picture/training.png' },
   { label: '人事部', route: 'hr', image: '/picture/hr.png' },
   { label: '茶水間', route: 'breakroom', image: '/picture/break.png' },
-  { label: '行銷部', route: 'operations', image: '/picture/operation.png' },
+  { label: '行銷部', route: 'marketing', image: '/picture/operation.png' },
   { label: '美食廣場', route: 'foodcourt', image: '/picture/food.png' },
   { label: '福利社', route: 'store', image: '/picture/shop.png' },
 ];
@@ -15,29 +16,30 @@ const menuItems = [
 function Dashboard() {
   const [user, setUser] = useState({});
   const [showDialog, setShowDialog] = useState(false); // 用於顯示選擇視窗
+  const [showQaModal, setshowQaModal] = useState(false);
   const navigate = useNavigate();
 
   useEffect(() => {
+    const fetchUserData = async () => {
+      try {
+        const response = await fetch('http://localhost:3001/api/dashboard/data', {
+          method: 'GET',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          credentials: 'include',
+        });
+        const data = await response.json();
+        setUser(data);
+        checkExperience(data); // 檢查經驗值
+      } catch (error) {
+        console.error('Error fetching user data:', error);
+      }
+    };
+
     fetchUserData();
   }, []);
-
-  const fetchUserData = async () => {
-    try {
-      const response = await fetch('http://localhost:3001/api/dashboard/data', {
-        method: 'GET',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        credentials: 'include',
-      });
-      const data = await response.json();
-      setUser(data);
-      checkExperience(data); // 檢查經驗值
-    } catch (error) {
-      console.error('Error fetching user data:', error);
-    }
-  };
-
+  
   const progressPercentage =
     user.Experience && user.TotalExperience
       ? Math.floor((user.Experience / user.TotalExperience) * 100)
@@ -69,8 +71,34 @@ function Dashboard() {
     navigate('/store'); // 跳轉至商店頁面
   };
 
-  const handleCircleClick = (route) => {
-    navigate(`/${route}`); // 處理按下圓圈的導航
+  const handleCloseQaModal = () => {
+    setshowQaModal(false); // 關閉彈窗
+  };
+
+  const handleCircleClick = async (route) => {
+    if (route === 'marketing') {
+      try {
+        const response = await fetch('http://localhost:3001/api/user/answer-status', {
+          method: 'GET',
+          credentials: 'include', // 傳遞 cookie
+          headers: {
+            'Content-Type': 'application/json',
+          },
+        });
+  
+        const data = await response.json();
+        if (data.Answer_ques === 1) {
+          alert('今日已回答過問題！');
+        } else {
+          setshowQaModal(true); // 如果未回答則顯示 Qa 彈窗
+        }
+      } catch (error) {
+        console.error('Error checking answer status:', error);
+        alert('檢查回答狀態時出錯');
+      }
+    } else {
+      navigate(`/${route}`);
+    }
   };
 
   return (
@@ -124,7 +152,17 @@ function Dashboard() {
           </div>
         ))}
       </div>
-
+      {showQaModal && (
+          <>
+            {/* 增加遮罩層，點擊可以關閉彈窗 */}
+            <div className="overlay" onClick={handleCloseQaModal}></div>
+            
+            {/* 顯示 Qa 組件的彈窗 */}
+            <div className="modal">
+              <Qa onClose={handleCloseQaModal} />
+            </div>
+          </>
+        )} 
       {showDialog && (
       <div className="modal">
         <div className="modal-content">

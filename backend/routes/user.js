@@ -60,4 +60,20 @@ router.get('/exp', async (req, reply) => {
   }
 });
 
+router.get('/answer-status', async (req, res) => {
+  try {
+    const userId = req.session.userId; // 從 session 獲取使用者 ID
+    const user = await User.findById(userId);
+
+    if (!user) {
+      return res.status(404).json({ message: '使用者不存在' });
+    }
+
+    res.status(200).json({ Answer_ques: user.Answer_ques });
+  } catch (error) {
+    console.error('Error checking answer status:', error);
+    res.status(500).json({ message: '伺服器錯誤' });
+  }
+});
+
 module.exports = router;

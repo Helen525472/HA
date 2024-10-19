@@ -9,7 +9,7 @@ const userSchema = new mongoose.Schema({
   Level: { type: Number, default: 1 },
   Experience: { type: Number, default: 0 },
   TotalExperience: Number,
-
+  Answer_ques: Number,
   redeemedGifts: [
     {
       giftName: String,

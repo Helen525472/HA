@@ -1,0 +1,88 @@
+body {
+    font-family: 'Luckiest Guy', sans-serif;
+}
+
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.5); /* 半透明背景 */
+    z-index: 999; /* 確保在彈窗下面 */
+  }
+  
+  /* 彈窗樣式 */
+.modalqa {
+    position: fixed;
+    top: 50%; /* 垂直居中 */
+    left: 50%; /* 水平居中 */
+    transform: translate(-50%, -50%); /* 偏移來置中 */
+    width: 90vh; /* 可根據需要調整 */
+    max-width: 500px; /* 最大寬度 */
+    background-color: white;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* 陰影效果 */
+    z-index: 1000; /* 確保在最上層 */
+    border-radius: 10px; /* 圓角 */
+  }
+  
+  /* 彈窗內容居中對齊 */
+.modalqa-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+  }
+
+.close {
+    position: absolute;
+    top: 5px;
+    right: 20px;
+    font-size: 50px; /* 調整這裡的字體大小來增加叉號大小 */
+    cursor: pointer;
+}
+
+#question {
+    font-size: 18px;
+    margin-bottom: 20px;
+}
+
+#options {
+    display: flex;
+    flex-direction: column;
+}
+
+.option {
+    padding: 10px;
+    margin: 5px 0;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: #fff;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.option.selected {
+    background-color: #d3bde6;
+}
+
+.option:hover {
+    background-color: #e0d4f7;
+}
+
+#submit {
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #c9286a;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 20px;
+}
+
+#submit:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
