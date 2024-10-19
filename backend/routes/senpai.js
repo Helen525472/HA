@@ -5,9 +5,7 @@ const Senpai = require('../models/Senpai');
 // 获取特定部门的前辈信息
 router.get('/:department', async (req, res) => {
   const { department } = req.params;
-  
-  //console.log('Requested department:', department);
-
+    
   try {
     const cutoffDate = new Date('2024/9/1');
     const departmentRegex = new RegExp(`^${department}`, 'i');

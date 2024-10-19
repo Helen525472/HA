@@ -24,13 +24,6 @@ app.use(session({
     sameSite: 'lax'  }   
 }));
 
-/*
-app.use((req, res, next) => {
-  console.log(`Received request: ${req.method} ${req.url}`);
-  next();
-});
-*/
-
 // 連結MongoDB 
 mongoose.connect(mongoURI, { useNewUrlParser: true, useUnifiedTopology: true })
   .then(() => console.log('MongoDB connected'))
@@ -43,6 +36,7 @@ const nickRoutes = require('./routes/nick');
 // const dashRoutes = require('./routes/dashboard');
 // const expRoutes = require('./routes/experience');
 const senpaiRoutes = require('./routes/senpai');
+const problemRoutes = require('./routes/problem');
 
 // 使用路由
 app.use('/api/user', userRoutes);
@@ -52,6 +46,7 @@ app.use('/api/nickname', nickRoutes);
 // app.use('/api/dashboard', dashRoutes);
 // app.use('/api/experience', expRoutes);
 app.use('/api/senpai', senpaiRoutes);
+app.use('/api/problem', problemRoutes);
 
 // 啟動服務器
 app.listen(3001, () => {
