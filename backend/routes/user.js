@@ -8,9 +8,9 @@ router.post('/check-user', async (req, res) => {
     const { userId, password } = req.body;
     
     // 密碼格式化為 YYYY-MM-DD 格式
-    const formattedPassword = `${parseInt(password.substring(0, 4), 10)}/` + 
-                              `${parseInt(password.substring(4, 6), 10)}/` + 
-                              `${parseInt(password.substring(6, 8), 10)}`;
+    const formattedPassword = `${parseInt(password.substring(0, 4), 10)}/` +
+                          `${parseInt(password.substring(4, 6), 10)}/` +
+                          `${parseInt(password.substring(6, 8), 10)}`;
     console.log(`userId: ${userId}, formattedPassword: ${formattedPassword}`);
     
     try {
@@ -37,6 +37,27 @@ router.post('/check-user', async (req, res) => {
       console.error('Error querying MongoDB:', error);
       res.status(500).json({ error: 'Server error' });
     }
+});
+
+router.get('/exp', async (req, reply) => {
+  const userId = req.session.userId; // 從 session 獲取 userId
+  console.log(`Fetching experience for user: ${userId}`);
+
+  if (!userId) {
+    return reply.status(401).send({ error: '未登錄' });
+  }
+
+  try {
+    const user = await User.findById(userId); // 從資料庫獲取使用者資料
+    if (user) {
+      reply.send({ Experience: user.Experience, TotalExperience: user.TotalExperience });
+    } else {
+      reply.status(404).send({ error: '用戶未找到' });
+    }
+  } catch (error) {
+    console.error('Error fetching user experience:', error);
+    reply.status(500).send({ error: '伺服器錯誤' });
+  }
 });
 
 module.exports = router;

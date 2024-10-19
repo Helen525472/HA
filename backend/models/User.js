@@ -9,6 +9,11 @@ const userSchema = new mongoose.Schema({
   Level: { type: Number, default: 1 },
   Experience: { type: Number, default: 0 },
   TotalExperience: Number,
+  First_Name: String,
+  Last_Name: String,
+  Department: String,
+  Status: String,
+  Position: String,
 
 }, { collection: 'EMPLOYEE' });
 

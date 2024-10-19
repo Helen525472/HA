@@ -1,11 +1,11 @@
-/*const express = require('express');
+const express = require('express');
 const router = express.Router();
 const User = require('../models/User');
 const Msg = require('../models/Msg');
 
 // employee 和 ID 對照檢查
-app.get('/api/employees/:id', async (req, res) => {
-    const employeeId = req.params.id; // 獲取路由參數中的員工 ID
+router.get('/employees/:id', async (req, res) => {
+    const employeeId = req.params.id; // 獲取form上打的id
 
     try {
         // 查詢員工資料
@@ -15,11 +15,13 @@ app.get('/api/employees/:id', async (req, res) => {
             return res.status(404).json({ error: '找不到對應的員工' });
         }
 
-        // 返回員工信息，合併 First Name 和 Last Name
+        // 返回員工信息，合併 First_Name 和 Last_Name
         res.json({
-            name: `${employee['First Name']} ${employee['Last Name']}`,
+            name: `${employee['First_Name']} ${employee['Last_Name']}`,
             birthday: employee.Date_Of_Birth,
-            department: employee.Department
+            department: employee.Department,
+            status: employee.Status,
+            position: employee.Position
         });
     } catch (error) {
         console.error(error);
@@ -28,7 +30,7 @@ app.get('/api/employees/:id', async (req, res) => {
 });
 
 // 獲取所有鼓勵訊息 (來自其他員工和主管)
-app.get('/api/allmsg', async (req, res) => {
+router.get('/allmsg', async (req, res) => {
     const userId = req.session.userId; //當前 login 的 employee id
     try {
         // 查詢 rID 等於當前登錄者 ID 的訊息
@@ -40,9 +42,15 @@ app.get('/api/allmsg', async (req, res) => {
 });
 
 // 發送鼓勵訊息 (E -> E)
-app.post('/api/msg', async (req, res) => {
+router.post('/msg', async (req, res) => {
     const { recipient, message } = req.body;
     const userId = req.session.userId; //當前 login 的 employee id
+    if (recipient === userId) { // Check if the recipient is the same as the logged-in user
+        return res.status(400).json({ error: "You cannot send a message to yourself." });
+    }
+    if (!recipient || !message) { // Validate input
+        return res.status(400).json({ error: "Recipient and message are required." });
+    }
     try {
         // 根據 recipient 查詢員工的資料
         const employee = await User.findById(recipient); // 根據實際字段名稱調整
@@ -51,8 +59,12 @@ app.post('/api/msg', async (req, res) => {
             return res.status(404).json({ error: '找不到對應的員工' });
         }
 
-        // 合併 First Name 和 Last Name
-        const rname = `${employee['First Name']} ${employee['Last Name']}`;
+        if (employee.Status !== 'Active') {
+            return res.status(400).json({ error: "不能向已離職員工傳送鼓勵哦！" });
+        }
+
+        const rname = `${employee['First_Name']} ${employee['Last_Name']}`;
+        //console.log(rname);
 
         const newMessage = new Msg({
             sID: userId, // 當前登入的用戶 ID
@@ -71,20 +83,59 @@ app.post('/api/msg', async (req, res) => {
 });
 
 //-----Page below only for supervisor---------
+//check e or s
+router.get('/se', async (req, res) => {
+    const employeeId = req.session.userId; //當前 login 的 employee id
+    try {
+        // 查詢員工資料
+        const employee = await User.findById(employeeId);
+
+        if (!employee) {
+            return res.status(404).json({ error: '找不到對應的員工' });
+        }
+
+        res.json({ position: employee.Position });
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ error: '查詢員工信息時出錯' });
+    }
+});
+
+//獲取主管的 department name
+router.get('/s_department', async (req, res) => {
+    const employeeId = req.session.userId; //當前 login 的 employee id
+    try {
+        // 查詢員工資料
+        const employee = await User.findById(employeeId);
+
+        if (!employee) {
+            return res.status(404).json({ error: '找不到對應的員工' });
+        }
+
+        res.json({ sdepartment: employee.Department });
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ error: '查詢員工信息時出錯' });
+    }
+});
 
 // 獲取所有和該主管為相同Department的員工
-app.get('/api/employees', async (req, res) => {
+router.get('/employees', async (req, res) => {
     const userId = req.session.userId; //當前 login 的 employee id
     try {
         // 查詢主管的資料
-        const supervisor = await User.findById(userID); // 使用主管的 userID
+        const supervisor = await User.findById(userId); // 使用主管的 userID
 
         if (!supervisor) {
             return res.status(404).json({ error: '找不到主管' });
         }
 
         // 根據主管的部門查詢所有相同部門的員工
-        const employees = await User.find({ Department: supervisor.Department });
+        const employees = await User.find({
+            Department: supervisor.Department,
+            Status: 'Active',
+            _id: { $ne: userId }
+        });
 
         res.json(employees);
     } catch (error) {
@@ -94,7 +145,7 @@ app.get('/api/employees', async (req, res) => {
 });
 
 // 發送點數和訊息
-app.post('/api/msg_p', async (req, res) => {
+router.post('/msg_p', async (req, res) => {
     const { recipients, message, points } = req.body; // 獲取 recipients 陣列
     const userId = req.session.userId; //當前 login 的 employee id
     try {
@@ -106,11 +157,15 @@ app.post('/api/msg_p', async (req, res) => {
                 return res.status(404).json({ error: `找不到對應的員工 ${recipient}` });
             }
 
-            // 更新該員工的 points
-            await User.updateOne({ _id: recipient }, { $inc: { points: points } });
+            if (employee.Status !== 'Active') {
+                return res.status(400).json({ error: "不能向已離職員工傳送鼓勵哦！" });
+            }
 
-            // 合併 First Name 和 Last Name
-            const rname = `${employee['First Name']} ${employee['Last Name']}`;
+            // 更新該員工的 points
+            await User.updateOne({ _id: recipient }, { $inc: { Experience: points } });
+
+            // 合併 First_Name 和 Last_Name
+            const rname = `${employee['First_Name']} ${employee['Last_Name']}`;
 
             const newMessage = new Msg({
                 sID: userId, // 當前登入的用戶 ID
@@ -128,4 +183,6 @@ app.post('/api/msg_p', async (req, res) => {
         console.error(error);
         res.status(500).json({ error: '發送訊息時出錯' });
     }
-});*/
+});
+
+module.exports = router; // 確保導出路由

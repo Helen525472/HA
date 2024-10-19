@@ -38,7 +38,7 @@ function Nickname() {
           body: JSON.stringify({ nickname }),
           credentials: 'include',
         });
-        navigate('/sbreakroom');
+        navigate('/dashboard');
       }
     } catch (error) {
       console.error('Error:', error);

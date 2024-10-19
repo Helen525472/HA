@@ -33,20 +33,18 @@ const userRoutes = require('./routes/user');
 const authRoutes = require('./routes/auth');
 const pictureRoutes = require('./routes/picture');
 const nickRoutes = require('./routes/nick');
-// const dashRoutes = require('./routes/dashboard');
-// const expRoutes = require('./routes/experience');
-const sbreakroomRoutes = require('./routes/sbreakroom');
-//const ebreakroomRoutes = require('./routes/ebreakroom');
+const dashRoutes = require('./routes/dashboard');
+const giftRoutes = require('./routes/gifts');
+const breakroomRoutes = require('./routes/breakroom');
 
 // 使用路由
 app.use('/api/user', userRoutes);
 app.use('/api/auth', authRoutes);
 app.use('/api/picture', pictureRoutes);
 app.use('/api/nick', nickRoutes);
-// app.use('/api/dashboard', dashRoutes);
-// app.use('/api/experience', expRoutes);
-app.use('/api/sbreakroom', sbreakroomRoutes);
-//app.use('/api/ebreakroom', ebreakroomRoutes);
+app.use('/api/dashboard', dashRoutes);
+app.use('/api/gifts', giftRoutes);
+app.use('/api/breakroom', breakroomRoutes);
 
 // 啟動服務器
 app.listen(3001, () => {

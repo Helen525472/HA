@@ -48,7 +48,7 @@ function Login() {
           if (firstLoginData.isFirstLogin) {
             navigate('/Player');
           } else {
-            navigate('/Sbreakroom'); ///////////
+            navigate('/Dashboard');
           }
         } else {
           alert('ID或密碼錯誤');
