@@ -7,6 +7,11 @@ import Nickname from './page/nickname'; //暱稱
 import Dashboard from './page/dashboard'; //主頁面
 import Store from './page/store'; //福利社
 import Profile from './page/profile'; //個人簡介頁面
+import Village from './page/village';//新手村頁面選項
+import Tsmcard from './page/tsmcard';//新手村留言板
+import Senpai from './page/senpai';//新手村前人資訊
+import Food from './page/food';//美食廣場
+import Choose from './page/choose';//美食轉盤
 import './App.css';
 
 function App() {
@@ -20,6 +25,11 @@ function App() {
         <Route path="/Dashboard" element={<Dashboard />} />
         <Route path="/Store" element={<Store />} />
         <Route path="/Profile" element={<Profile />} />
+        <Route path="/Village" element={<Village />} />
+        <Route path="/Tsmcard" element={<Tsmcard />} />
+        <Route path="/Senpai" element={<Senpai />} />
+        <Route path="/Food" element={<Food />} />
+        <Route path="/Choose" element={<Choose />} />
       </Routes>
     </Router>
   );

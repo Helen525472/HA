@@ -1,0 +1,129 @@
+:root {
+  --primary-color: #3498db;
+  --secondary-color: #2c3e50;
+  --background-color: #ecf0f1;
+  --text-color: #34495e;
+  --hover-color: #2980b9;
+  --card-background: #ffffff;
+  --sidebar-width: 180px;
+}
+
+body {
+  background-color: var(--background-color);
+  color: var(--text-color);
+  font-family: 'Arial', sans-serif;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
+
+.senpai-container {
+  display: flex;
+  height: 100vh;
+  align-items: center; /* 垂直居中 */
+  justify-content: center; /* 水平居中 */
+  max-height: 100%;
+  flex-wrap: wrap;
+  overflow-y: scroll;
+  text-align: center;
+}
+
+.top-bar {
+  display: none; /* 隱藏藍色頂部欄 */
+}
+
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: calc(-1 * var(--sidebar-width));
+  width: var(--sidebar-width);
+  height: 100vh;
+  background-color: var(--secondary-color);
+  transition: left 0.3s ease;
+  overflow-y: auto;
+  z-index: 999;
+  padding-top: 60px;
+}
+
+.sidebar.open {
+  left: 0;
+}
+
+.sidebar-toggle {
+  position: absolute;
+  top:10px; /* 調整按鈕位置 */
+  left: 200px;
+  width: 40px;
+  height: 40px;
+  background-color: var(--secondary-color);
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 20px;
+  cursor: pointer;
+  z-index: 1001;
+}
+
+.main-content {
+  flex-grow: 1;
+  max-width:1500px;
+  margin: auto;
+  padding: 20px;
+  transition: margin-left 0.3s ease;
+}
+
+.senpai-info-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 20px;
+  padding: 20px;
+  word-wrap: break-word; /* 確保長文字換行 */
+  overflow-wrap: break-word;
+  white-space: normal; /* 讓文字可以正常換行 */
+  text-align: center; /* 文字置中 */
+}
+
+.senpai-info-item {
+  background-color: var(--card-background);
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  padding: 15px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.senpai-info-item:hover {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+  transform: translateY(-2px);
+}
+
+button {
+  background-color: var(--secondary-color);
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  padding: 12px;
+  margin: 10px 0;
+  width: 100%;
+  text-align: left;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: var(--hover-color);
+}
+
+.home-content {
+  width: 80%; /* 調整框框的寬度 */
+  max-width: 800px; /* 限制最大寬度 */
+  margin: 20px auto; /* 垂直置中且水平居中 */
+  padding: 20px; /* 增加內邊距 */
+  border: 0px solid #3498db; /* 設置邊框顏色 */
+  border-radius: 10px; /* 圓角 */
+  background-color: #ffffff; /* 背景顏色 */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4); /* 添加陰影效果 */
+  text-align: center; /* 文字居中 */
+  font-size: 18px; /* 字體大小 */
+  line-height: 1.5; /* 行距 */
+}
+

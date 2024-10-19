@@ -61,6 +61,7 @@ input[type="password"] {
     cursor: pointer;
     margin-top: 20px;
     font-family: 'Luckiest Guy', sans-serif;
+    text-align: center;
 }
 
 .login-button:hover {

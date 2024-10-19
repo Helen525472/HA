@@ -38,6 +38,9 @@ const giftRoutes = require('./routes/gifts');
 const expressRoutes = require('./routes/express');
 const quesRoutes = require('./routes/ques');
 const expRoutes = require('./routes/experience');
+const senpaiRoutes = require('./routes/senpai');
+const foodRoutes = require('./routes/foods');
+const signRoutes = require('./routes/sign');
 
 // 使用路由
 app.use('/api/user', userRoutes);
@@ -47,8 +50,11 @@ app.use('/api/nick', nickRoutes);
 app.use('/api/dashboard', dashRoutes);
 app.use('/api/gifts', giftRoutes);
 app.use('/api/express', expressRoutes);
-app.use('/api/ques', quesRoutes)
-app.use('/api/experience',expRoutes)
+app.use('/api/ques', quesRoutes);
+app.use('/api/experience',expRoutes);
+app.use('/api/senpai', senpaiRoutes);
+app.use('/api/foods', foodRoutes);
+app.use('/api/sign', signRoutes);
 
 // 啟動服務器
 app.listen(3001, () => {

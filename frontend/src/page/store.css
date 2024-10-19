@@ -58,12 +58,16 @@
     color: black;
     border: none;
     cursor: pointer;
+    width: 100px;
+    text-align:center;
   }
   
   .redeem-button:disabled {
     background-color: #cccccc;
     cursor: not-allowed;
     opacity: 0.5;
+    text-align:center;
+    width: 100px;
   }
   
   .modal {

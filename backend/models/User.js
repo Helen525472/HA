@@ -10,6 +10,7 @@ const userSchema = new mongoose.Schema({
   Experience: { type: Number, default: 0 },
   TotalExperience: Number,
   Answer_ques: Number,
+  signin:{ type: Number, default: 0},
   redeemedGifts: [
     {
       giftName: String,
