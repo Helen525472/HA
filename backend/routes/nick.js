@@ -5,11 +5,10 @@ const User = require('../models/User');
 // 檢查暱稱是否存在
 router.post('/check', async (req, res) => {
   const { nickname } = req.body;
-
   try {
     const user = await User.findOne({ Nickname: nickname });
     if (user) {
-      console.log('沒有重複暱稱');
+      console.log('有重複暱稱');
       return res.json({ exists: true });
     } else {
       return res.json({ exists: false });
@@ -23,9 +22,8 @@ router.post('/check', async (req, res) => {
 // 儲存暱稱
 router.post('/save', async (req, res) => {
   const { nickname } = req.body;
-  const userId = req.session.userId;
-
-  console.log('User ID from session:', userId); 
+  const userId = req.session.userId; 
+  console.log('User ID from session(for nickname):', userId); 
   console.log('Nickname to save:', nickname); 
 
   try {

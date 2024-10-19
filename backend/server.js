@@ -33,16 +33,16 @@ const userRoutes = require('./routes/user');
 const authRoutes = require('./routes/auth');
 const pictureRoutes = require('./routes/picture');
 const nickRoutes = require('./routes/nick');
-// const dashRoutes = require('./routes/dashboard');
-// const expRoutes = require('./routes/experience');
+const dashRoutes = require('./routes/dashboard');
+const giftRoutes = require('./routes/gifts');
 
 // 使用路由
 app.use('/api/user', userRoutes);
 app.use('/api/auth', authRoutes);
 app.use('/api/picture', pictureRoutes);
-app.use('/api/nickname', nickRoutes);
-// app.use('/api/dashboard', dashRoutes);
-// app.use('/api/experience', expRoutes);
+app.use('/api/nick', nickRoutes);
+app.use('/api/dashboard', dashRoutes);
+app.use('/api/gifts', giftRoutes);
 
 // 啟動服務器
 app.listen(3001, () => {
