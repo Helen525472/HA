@@ -22,7 +22,7 @@ function Login() {
             'Content-Type': 'application/json',
           },
           body: JSON.stringify({ userId, password }),  // 將用戶ID和密碼做為請求
-          credentials: 'include'
+          credentials: 'include' //一定要有這行
         });
         const data = await response.json();
         

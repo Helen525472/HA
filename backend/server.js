@@ -24,6 +24,13 @@ app.use(session({
     sameSite: 'lax'  }   
 }));
 
+/*
+app.use((req, res, next) => {
+  console.log(`Received request: ${req.method} ${req.url}`);
+  next();
+});
+*/
+
 // 連結MongoDB 
 mongoose.connect(mongoURI, { useNewUrlParser: true, useUnifiedTopology: true })
   .then(() => console.log('MongoDB connected'))
@@ -35,6 +42,7 @@ const pictureRoutes = require('./routes/picture');
 const nickRoutes = require('./routes/nick');
 // const dashRoutes = require('./routes/dashboard');
 // const expRoutes = require('./routes/experience');
+const senpaiRoutes = require('./routes/senpai');
 
 // 使用路由
 app.use('/api/user', userRoutes);
@@ -43,8 +51,15 @@ app.use('/api/picture', pictureRoutes);
 app.use('/api/nickname', nickRoutes);
 // app.use('/api/dashboard', dashRoutes);
 // app.use('/api/experience', expRoutes);
+app.use('/api/senpai', senpaiRoutes);
 
 // 啟動服務器
 app.listen(3001, () => {
   console.log('Server is running on port 3001');
+});
+
+// 錯誤處理中間件->備用
+app.use((err, req, res, next) => {
+  console.error(err.stack);
+  res.status(500).send('Something broke!');
 });

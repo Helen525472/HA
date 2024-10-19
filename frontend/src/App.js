@@ -5,6 +5,12 @@ import Player from './page/player'; //頭貼
 import Login from './page/login'; //登入頁面
 import Nickname from './page/nickname'; //暱稱
 import Dashboard from './page/dashboard';
+import Village from './page/village';//新手村頁面選項
+import Tsmcard from './page/tsmcard';//新手村留言板
+import Senpai from './page/senpai';//新手村前人資訊
+import Food from './page/food';//美食廣場
+import Map from './page/map';//美食地圖
+import Choose from './page/choose';//美食轉盤
 import './App.css';
 
 function App() {
@@ -16,6 +22,12 @@ function App() {
         <Route path="/Player" element={<Player />} />
         <Route path="/Nickname" element={<Nickname />} />
         <Route path="/Dashboard" element={<Dashboard />} />
+        <Route path="/Village" element={<Village />} />
+        <Route path="/Tsmcard" element={<Tsmcard />} />
+        <Route path="/Senpai" element={<Senpai />} />
+        <Route path="/Food" element={<Food />} />
+        <Route path="/Map" element={<Map />} />
+        <Route path="/Choose" element={<Choose />} />
       </Routes>
     </Router>
   );

@@ -1,0 +1,45 @@
+.food-map-container {
+    display: flex;
+    height: 100vh;
+  }
+  
+  .restaurant-list {
+    width: 200px;
+    overflow-y: auto;
+    padding: 20px;
+    border-right: 1px solid #ccc;
+  }
+  
+  .restaurant-list button {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    text-align: left;
+  }
+  
+  .restaurant-info {
+    flex-grow: 1;
+    padding: 20px;
+    overflow-y: auto;
+  }
+  
+  .comment {
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin-bottom: 10px;
+  }
+  
+  form {
+    margin-top: 20px;
+  }
+  
+  textarea {
+    width: 100%;
+    height: 100px;
+    margin-bottom: 10px;
+  }
+  
+  select {
+    margin-right: 10px;
+  }
