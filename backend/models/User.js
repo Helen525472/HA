@@ -14,6 +14,8 @@ const userSchema = new mongoose.Schema({
     {
       giftName: String,
       redeemedDate: Date,
+      expirationDate: String,
+      redeemed: Boolean,
     },
   ]
 }, { collection: 'EMPLOYEE' });

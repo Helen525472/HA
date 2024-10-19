@@ -35,7 +35,7 @@ const pictureRoutes = require('./routes/picture');
 const nickRoutes = require('./routes/nick');
 const dashRoutes = require('./routes/dashboard');
 const giftRoutes = require('./routes/gifts');
-
+const expressRoutes = require('./routes/express');
 // 使用路由
 app.use('/api/user', userRoutes);
 app.use('/api/auth', authRoutes);
@@ -43,6 +43,7 @@ app.use('/api/picture', pictureRoutes);
 app.use('/api/nick', nickRoutes);
 app.use('/api/dashboard', dashRoutes);
 app.use('/api/gifts', giftRoutes);
+app.use('/api/express', expressRoutes);
 
 // 啟動服務器
 app.listen(3001, () => {

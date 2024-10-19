@@ -38,6 +38,7 @@ router.post('/redeem', async (req, res) => {
       user.redeemedGifts.push({
         giftName: gift.name,
         redeemedDate: new Date(), // 記錄兌換日期
+        expirationDate: gift.expirationDate
       });
       // 保存用戶信息
       await user.save();

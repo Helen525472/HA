@@ -6,6 +6,7 @@ import Login from './page/login'; //登入頁面
 import Nickname from './page/nickname'; //暱稱
 import Dashboard from './page/dashboard'; //主頁面
 import Store from './page/store'; //福利社
+import Profile from './page/profile'; //個人簡介頁面
 import './App.css';
 
 function App() {
@@ -18,6 +19,7 @@ function App() {
         <Route path="/Nickname" element={<Nickname />} />
         <Route path="/Dashboard" element={<Dashboard />} />
         <Route path="/Store" element={<Store />} />
+        <Route path="/Profile" element={<Profile />} />
       </Routes>
     </Router>
   );
