@@ -14,7 +14,7 @@ const Breakroom = () => {
     const [sdepartmentName, setsDepartmentName] = useState('');
     const [userPosition, setUserPosition] = useState('');
     const navigate = useNavigate();
-
+    
     // 檢查員工 ID
     const handleIdChange = async (e) => {
         setEmployeeId(e.target.value); // Update state as the user types
@@ -104,6 +104,12 @@ const Breakroom = () => {
 
     // 發送點數和訊息
     const handleSendPoints1 = async () => {
+        const checkedBoxes = document.querySelectorAll('#employee-list input:checked');
+
+        if (checkedBoxes.length === 0) {
+            alert('Please select at least one employee.');
+            return; // Exit the function if the condition is not met
+        }
         const selectedEmployees = Array.from(document.querySelectorAll('#employee-list input:checked')).map(input => input.value);
         try {
             const response = await fetch('http://localhost:3001/api/breakroom/msg_p', {
@@ -213,143 +219,144 @@ const Breakroom = () => {
 
     return (
         <div
-      style={{
-        backgroundImage: 'url("/picture/breakroom.png")',
-        backgroundSize: 'cover',
-        backgroundPosition: 'center',
-        backgroundRepeat: 'no-repeat',
-        height: '100vh',
-        width: '100vw',
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-      }}
-    >
+        style={{
+            height: '100vh',
+            width: '100vw',
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+        }}
+        >
+        <div className="home-icon" onClick={() => navigate('/dashboard')}>
+        <img src="/icon/home.png" alt="Home" /></div>
         <div className="container">
-            <div className="home-icon" onClick={() => navigate('/dashboard')}>
-            <img src="/icon/home.png" alt="Home" />
-            </div>
             <h1>Give others some encourage !</h1>
-            <div className="scroll-container">
-                <div className="anonymous-encouragement">
-                    <div className="message-list">
-                        {messages.map(msg => (
-                            <div className="message" key={msg._id}>
-                                <p>{msg.msg}</p>
-                                {msg.points !== 0 && (
-                                    <p className="message-points">Points: {msg.points}</p>
-                                )}
-                                <small>Received at: {new Date(msg.time).toLocaleString()}</small>
+                <div className="content-wrapper">
+                    <div className="anonymous-encouragement">
+                        <div className="message-list-container">
+                            <div className="message-list">
+                                {messages.map(msg => (
+                                    <div className="message" key={msg._id}>
+                                        <p>{msg.msg}</p>
+                                        {msg.points !== 0 && (
+                                            <p className="message-points">Points: {msg.points}</p>
+                                        )}
+                                        <small>Received at: {new Date(msg.time).toLocaleString()}</small>
+                                    </div>
+                                ))}
                             </div>
-                        ))}
-                    </div>
-                    <div className="employee-checker">
-                        <div className="input-group">
-                            <label htmlFor="employee-id">ID CHECKER:</label>
-                            <input
-                                id="employee-id"
-                                type="text"
-                                value={employeeId}
-                                onChange={handleIdChange}
-                                onKeyDown={handleKeyDown}
-                                placeholder="Type in Employee ID + click 'Enter'"
-                            />
                         </div>
-                        {employee && (
-                            <div>
-                                <p>Name: <span id="employee-name">{employee.name}</span></p>
-                                <p>Birthday: <span id="employee-birthday">{employee.birthday}</span></p>
-                                <p>Department: <span id="employee-department">{employee.department}</span></p>
-                                <p>Status: <span id="employee-status">{employee.status}</span></p>
-                                <p>Position: <span id="employee-position">{employee.position}</span></p>
+                        <div className="employee-checker">
+                            <div className="input-group">
+                                <label htmlFor="employee-id">ID CHECKER:</label>
+                                <input
+                                    id="employee-id"
+                                    type="text"
+                                    value={employeeId}
+                                    onChange={handleIdChange}
+                                    onKeyDown={handleKeyDown}
+                                    placeholder="Employee ID + click 'Enter'"
+                                />
                             </div>
-                        )}
-                        <div className="input-group">
-                            <label htmlFor="recipient">TO:</label>
-                            <input
-                                id="recipient"
-                                type="text"
-                                value={recipient}
-                                onChange={e => setRecipient(e.target.value)}
-                                placeholder="Recipient ID"
-                            />
+                            {employee && (
+                                <div>
+                                    <p>Name: <span id="employee-name">{employee.name}</span></p>
+                                    <p>Birthday: <span id="employee-birthday">{employee.birthday}</span></p>
+                                    <p>Department: <span id="employee-department">{employee.department}</span></p>
+                                    <p>Status: <span id="employee-status">{employee.status}</span></p>
+                                    <p>Position: <span id="employee-position">{employee.position}</span></p>
+                                </div>
+                            )}
+                            <div className="input-group">
+                                <label htmlFor="recipient">TO:</label>
+                                <input
+                                    id="recipient"
+                                    type="text"
+                                    value={recipient}
+                                    onChange={e => setRecipient(e.target.value)}
+                                    placeholder="Recipient ID"
+                                />
+                            </div>
+                            <div className="input-group">
+                                <label htmlFor="message">MSG (想說的話):</label>
+                                <textarea
+                                    id="message"
+                                    value={message}
+                                    onChange={e => setMessage(e.target.value)}
+                                    placeholder="Your message"
+                                />
+                            </div>
+                            <button id="send-message" onClick={handleSendMessage}>Send 鼓勵</button>
                         </div>
-                        <div className="input-group">
-                            <label htmlFor="message">MSG (想說的話):</label>
-                            <textarea
-                                id="message"
-                                value={message}
-                                onChange={e => setMessage(e.target.value)}
-                                placeholder="Your message"
-                            />
-                        </div>
-                        <button id="send-message" onClick={handleSendMessage}>Send 鼓勵</button>
                     </div>
+                    {userPosition === 'supervisor' && ( // Conditional rendering based on user position
+                        <div className="department-section">
+                            <h2>{sdepartmentName}</h2>
+                            <div className="department-content">
+                                <ul id="employee-list" className="employee-list">
+                                    {employees.map(employee => (
+                                        <li key={employee._id} className="employee-item">
+                                            <input type="checkbox" id={`employee-${employee._id}`} value={employee._id} />
+                                            <label htmlFor={`employee-${employee._id}`}>{employee['First_Name']} {employee['Last_Name']} ({employee._id})</label>
+                                        </li>
+                                    ))}
+                                </ul>
+                                <div className="supervisor-actions">
+                                    <div className="tabs">
+                                        <div className="tab active" onClick={() => handleTabClick('.tab-content-1')} data-target=".tab-content-1">Send altogether</div>
+                                        <div className="tab" onClick={() => handleTabClick('.tab-content-2')} data-target=".tab-content-2">Send individually</div>
+                                    </div>
+                                    <div className="tab-content tab-content-1 active">
+                                        <div className="input-group">
+                                            <label htmlFor="points">Points:</label>
+                                            <input
+                                                id="points"
+                                                type="number"
+                                                value={points}
+                                                onChange={e => setPoints(e.target.value)}
+                                                placeholder="Points"
+                                            />
+                                        </div>
+                                        <div className="input-group">
+                                            <label htmlFor="supervisor-message">MSG (想說的話):</label>
+                                            <textarea
+                                                id="supervisor-message"
+                                                value={supervisorMessage}
+                                                onChange={e => setSupervisorMessage(e.target.value)}
+                                                placeholder="Supervisor message"
+                                            />
+                                        </div>
+                                        <button id="send-points" onClick={handleSendPoints1}>Send points & msg</button>
+                                    </div>
+                                    <div className="tab-content tab-content-2">
+                                        <div className="input-group">
+                                            <label htmlFor="points">Points:</label>
+                                            <input
+                                                id="points"
+                                                type="number"
+                                                value={points}
+                                                onChange={e => setPoints(e.target.value)}
+                                                placeholder="Points"
+                                            />
+                                        </div>
+                                        <div className="input-group">
+                                            <label htmlFor="supervisor-message">MSG (想說的話):</label>
+                                            <textarea
+                                                id="supervisor-message"
+                                                value={supervisorMessage}
+                                                onChange={e => setSupervisorMessage(e.target.value)}
+                                                placeholder="Supervisor message"
+                                            />
+                                        </div>
+                                        <button id="send-points" onClick={handleSendPoints2}>Send points & msg</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    )}
                 </div>
-                {userPosition === 'supervisor' && ( // Conditional rendering based on user position
-                    <div className="department-section">
-                        <h2>{sdepartmentName}</h2>
-                        <ul id="employee-list" className="employee-list">
-                            {employees.map(employee => (
-                                <li key={employee._id} className="employee-item">
-                                    <input type="checkbox" id={`employee-${employee._id}`} value={employee._id} />
-                                    <label htmlFor={`employee-${employee._id}`}>{employee['First_Name']} {employee['Last_Name']} ({employee._id})</label>
-                                </li>
-                            ))}
-                        </ul>
-                        <div className="tabs">
-                            <div className="tab active" onClick={() => handleTabClick('.tab-content-1')} data-target=".tab-content-1">Send altogether</div>
-                            <div className="tab" onClick={() => handleTabClick('.tab-content-2')} data-target=".tab-content-2">Send individually</div>
-                        </div>
-                        <div className="tab-content tab-content-1 active">
-                            <div className="input-group">
-                                <label htmlFor="points">Points:</label>
-                                <input
-                                    id="points"
-                                    type="number"
-                                    value={points}
-                                    onChange={e => setPoints(e.target.value)}
-                                    placeholder="Points"
-                                />
-                            </div>
-                            <div className="input-group">
-                                <label htmlFor="supervisor-message">MSG (想說的話):</label>
-                                <textarea
-                                    id="supervisor-message"
-                                    value={supervisorMessage}
-                                    onChange={e => setSupervisorMessage(e.target.value)}
-                                    placeholder="Supervisor message"
-                                />
-                            </div>
-                            <button id="send-points" onClick={handleSendPoints1}>Send points & msg</button>
-                        </div>
-                        <div className="tab-content tab-content-2">
-                            <div className="input-group">
-                                <label htmlFor="points">Points:</label>
-                                <input
-                                    id="points"
-                                    type="number"
-                                    value={points}
-                                    onChange={e => setPoints(e.target.value)}
-                                    placeholder="Points"
-                                />
-                            </div>
-                            <div className="input-group">
-                                <label htmlFor="supervisor-message">MSG (想說的話):</label>
-                                <textarea
-                                    id="supervisor-message"
-                                    value={supervisorMessage}
-                                    onChange={e => setSupervisorMessage(e.target.value)}
-                                    placeholder="Supervisor message"
-                                />
-                            </div>
-                            <button id="send-points" onClick={handleSendPoints2}>Send points & msg</button>
-                       </div>
-                    </div>
-                )}
-            </div>
+            </div>    
         </div>
-    </div>
     );
 };
 
