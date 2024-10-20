@@ -6,11 +6,12 @@ router.get('/redemption-records', async (req, res) => {
   try {
     const userId = req.session.userId;
     const user = await User.findById(userId);
+    console.log(userId);
 
     if (!user) {
       return res.status(404).send({ error: 'User not found' });
     }
-
+    console.log(user.redeemedGifts )
     res.send(user.redeemedGifts || []);
   } catch (error) {
     console.error('Error fetching redemption records:', error);

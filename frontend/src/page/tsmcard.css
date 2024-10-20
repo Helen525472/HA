@@ -1,220 +1,469 @@
 /* Container styles */
+:root {
+  --primary-color: #f0f4f8;
+  --secondary-color: #dbe2ef;
+  --text-color: #2b2d42;
+  --highlight-color: #3f72af;
+  --background-color: #ffffff;
+}
+
+body {
+  background-color: var(--background-color);
+  color: var(--text-color);
+}
+
 .message-board-container {
-    display: flex;
-    flex-direction: row;
-    width: 100%;
-    height: 100vh;
-    background-color: #f4f4f4;
-    font-family: Arial, sans-serif;
+  background-color: var(--primary-color);
+  padding: 20px;
+}
+
+.top-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 10px 20px;
+  background-color: var(--primary-color);
+  color: white;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  z-index: 1000;
+}
+
+.tsmcard-container {
+  display: flex;
+  height: 100vh;
+  overflow-y: auto; /* 添加垂直滾動 */
+}
+
+.user-info {
+  font-size: 14px;
+  color: #333;
+}
+
+/* Sidebar styles */
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: calc(-1 * var(--sidebar-width));
+  width: var(--sidebar-width);
+  height: 100vh;
+  background-color: var(--secondary-color);
+  transition: left 0.3s ease;
+  overflow-y: auto;
+  z-index: 999;
+  padding-top: 60px;
+  padding: 20px;
+}
+
+.sidebar.open {
+  left: 0;
+}
+
+.sidebar-toggle {
+  position: fixed;
+  top: 70px;
+  left: 10px;
+  width: 40px;
+  height: 40px;
+  background-color: var(--secondary-color);
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 20px;
+  cursor: pointer;
+  z-index: 1001;
+}
+
+.sidebar button {
+  display: block;
+  width: 100%;
+  padding: 8px 10px;
+  text-align: left;
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  font-size: 13px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin-bottom: 2px;
+}
+
+.sidebar button:hover {
+  background-color: var(--hover-color);
+}
+
+.category-list {
+  margin-top: 10px;
+}
+
+.category-list button {
+  padding-left: 20px;
+}
+
+/* Main content styles */
+.main-content {
+  background-color: var(--background-color);
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.main-content > button {
+  background-color: var(--highlight-color);
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  cursor: pointer;
+  border-radius: 5px;
+  margin-bottom: 20px;
+}
+
+.main-content > button:hover {
+  opacity: 0.9;
+}
+
+.sidebar.open + .main-content {
+  margin-left: var(--sidebar-width);
+}
+
+.sidebar.open + .main-content .sidebar-toggle {
+  left: calc(var(--sidebar-width) + 10px);
+}
+
+/* Messages list styles */
+.messages-list {
+  background-color: white;
+  padding: 10px;
+  margin-bottom: 20px;
+  border-radius: 5px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+.message-item {
+  border: 1px solid #ddd;
+  margin-bottom: 20px;
+  padding: 10px;
+}
+
+.message-item p {
+  margin: 0;
+}
+
+.sort-options {
+  margin-bottom: 20px;
+}
+
+.sort-options button {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 15px;
+  background-color: var(--primary-color);
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.sort-options button:hover {
+  background-color: var(--hover-color);
+}
+
+.sort-options .arrow {
+  margin-left: 10px;
+  font-size: 0.8em;
+}
+
+.sort-button {
+  background-color: var(--highlight-color);
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  cursor: pointer;
+  border-radius: 5px;
+  margin-bottom: 20px;
+}
+
+.sort-button:hover {
+  opacity: 0.9;
+}
+
+/* Form styles */
+.message-form {
+  background-color: #f9f9f9;
+  padding: 15px;
+  border-radius: 5px;
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);
+}
+
+.message-form textarea {
+  width: 100%;
+  height: 80px;
+  margin-bottom: 10px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  resize: none;
+}
+
+.submit-button {
+  padding: 10px 15px;
+  background-color: #333;
+  color: white;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.submit-button:hover {
+  background-color: #555;
+}
+
+.question-content {
+  margin-bottom: 10px;
+}
+
+.answers-list {
+  margin-left: 20px;
+}
+
+.answer-item {
+  border: 1px solid #eee;
+  margin-bottom: 10px;
+  padding: 5px;
+}
+
+.reply-form {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.post-time {
+  font-size: 0.8em;
+  color: #888;
+}
+
+.edit-button, .reply-button {
+  margin-left: 10px;
+}
+
+.forum-home {
+  text-align: center;
+}
+
+.forum-home img {
+  max-width: 100%;
+  height: auto;
+}
+
+.problems-list {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.problem-item {
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end; /* 使子元素靠右對齊 */
+}
+
+.problem-button {
+  width: 600px;
+  text-align: left;
+  background-color: #f0f4f8;
+  color: #2b2d42;
+  border: 1px solid #dbe2ef;
+  padding: 20px;
+  cursor: pointer;
+  border-radius: 5px;
+  height: 150px; /* 固定高度 */
+  overflow: hidden;
+  transition: background-color 0.3s;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.problem-button:hover {
+  background-color: #dbe2ef; /* 懸停時稍微變深 */
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1); /* 添加輕微陰影 */
+  transform: translateY(-2px); /* 輕微上移 */
+}
+
+.problem-button h3 {
+  margin: 0;
+  font-size: 1em;
+  color: #3f72af;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+}
+
+.problem-button p {
+  margin: 5px 0;
+  font-size: 0.9em;
+  color: #666;
+}
+
+.answers-section {
+  width: 530px;
+  padding: 15px;
+  background-color: #ffffff;
+  border: 1px solid #dbe2ef;
+  border-radius: 5px;
+  margin-top: -10px;
+  color: #2b2d42;
+  align-self: flex-end;
+}
+
+.answer-content {
+  margin-top: 10px;
+  border-bottom: 1px solid #eee;
+}
+
+.answer-text {
+  margin: 0 0 10px 0;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+}
+
+.answer-button {
+  width: 80px;
+  margin-right: 10px;
+  background-color: #aa4fe0;
+  color: white;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+.answer-button:hover {
+  background-color: #0056b3;
+}
+
+/* 為了確保長文本不會破壞布局 */
+.problem-button, .answer-content {
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+.ask-question-button {
+  padding: 10px 20px;
+  background-color: #aa4fe0;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.question-form {
+  margin-bottom: 20px;
+}
+
+.question-input {
+  width: 100%;
+  height: 100px;
+  margin-bottom: 10px;
+  padding: 10px;
+}
+
+.submit-button, .cancel-button {
+  padding: 10px 20px;
+  margin-right: 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.submit-button {
+  background-color: #28a745;
+  color: white;
+}
+
+.cancel-button {
+  background-color: #dc3545;
+  color: white;
+}
+
+
+
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  background-color: white;
+  padding: 20px;
+  border-radius: 5px;
+  width: 80%;
+  max-width: 500px;
+}
+
+.modal-content h2 {
+  margin-top: 0;
+}
+
+.modal-content textarea {
+  width: 100%;
+  height: 100px;
+  margin-bottom: 10px;
+}
+
+.modal-content select {
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+.modal-buttons {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.modal-buttons button {
+  margin-left: 10px;
+}
+
+@media (min-width: 1200px) {
+  .problems-list {
+    max-width: 1200px;
   }
-  
-  /* Sidebar styles */
-  .sidebar {
-    width: 250px;
-    background-color: #333;
-    color: white;
-    display: flex;
-    flex-direction: column;
-    padding: 20px;
+}
+
+@media (max-width: 768px) {
+  :root {
+    --sidebar-width: 160px;
   }
-  
+
   .sidebar button {
-    background-color: #444;
-    color: white;
-    border: none;
-    padding: 10px;
-    margin-bottom: 10px;
-    cursor: pointer;
-    text-align: left;
-    font-size: 14px;
+    font-size: 12px;
+    padding: 6px 8px;
   }
-  
-  .sidebar button:hover {
-    background-color: #555;
-  }
-  
-  .sidebar .category-dropdown {
-    position: relative;
-  }
-  
-  .sidebar .dropdown-content {
-    display: none;
-    position: absolute;
-    background-color: #555;
-    min-width: 160px;
-    z-index: 1;
-  }
-  
-  .sidebar .category-dropdown:hover .dropdown-content {
-    display: block;
-  }
-  
-  .dropdown-content button {
-    width: 100%;
-    padding: 10px;
-    background-color: #666;
-    border: none;
-    color: white;
-    text-align: left;
-  }
-  
-  .dropdown-content button:hover {
-    background-color: #777;
-  }
-  
-  /* Top bar styles */
-  .top-bar {
-    display: flex;
-    justify-content: space-between;
-    padding: 20px;
-    background-color: #eee;
-    border-bottom: 1px solid #ddd;
-  }
-  
-  .user-info {
-    font-size: 14px;
-    color: #333;
-  }
-  
-  /* Main content styles */
+
   .main-content {
-    flex-grow: 1;
-    padding: 20px;
-  }
-  
-  .messages-list {
-    background-color: white;
-    padding: 10px;
-    margin-bottom: 20px;
-    border-radius: 5px;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-  }
-  
-  .message-item {
-    border: 1px solid #ddd;
-    margin-bottom: 20px;
-    padding: 10px;
-  }
-  
-  .message-item p {
-    margin: 0;
-  }
-  
-  .sort-options {
-    margin-bottom: 20px;
-  }
-  
-  .sort-options button {
-    padding: 5px 10px;
-    margin-right: 10px;
-    background-color: #ddd;
-    border: 1px solid #ccc;
-    cursor: pointer;
-  }
-  
-  .sort-options button:hover {
-    background-color: #ccc;
-  }
-  
-  .message-form {
-    background-color: #f9f9f9;
-    padding: 15px;
-    border-radius: 5px;
-    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);
-  }
-  
-  .message-form textarea {
-    width: 100%;
-    height: 80px;
-    margin-bottom: 10px;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    resize: none;
-  }
-  
-  .submit-button {
-    padding: 10px 15px;
-    background-color: #333;
-    color: white;
-    border: none;
-    cursor: pointer;
-    border-radius: 5px;
-  }
-  
-  .submit-button:hover {
-    background-color: #555;
+    padding: 15px 15px 15px 50px;
   }
 
-  .question-content {
-    margin-bottom: 10px;
+  .problem-item {
+    width: 100%; /* 在小屏幕上佔滿寬度 */
   }
-  
-  .answers-list {
-    margin-left: 20px;
-  }
-  
-  .answer-item {
-    border: 1px solid #eee;
-    margin-bottom: 10px;
-    padding: 5px;
-  }
-  
-  .reply-form {
-    margin-top: 10px;
-    margin-bottom: 10px;
-  }
-  
-  .post-time {
-    font-size: 0.8em;
-    color: #888;
-  }
-  
-  .edit-button, .reply-button {
-    margin-left: 10px;
-  }
-
-  .forum-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 20px;
-  }
-  
-  .ask-question-button {
-    padding: 10px 20px;
-    background-color: #007bff;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-  }
-  
-  .question-form {
-    margin-bottom: 20px;
-  }
-  
-  .question-input {
-    width: 100%;
-    height: 100px;
-    margin-bottom: 10px;
-    padding: 10px;
-  }
-  
-  .submit-button, .cancel-button {
-    padding: 10px 20px;
-    margin-right: 10px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-  }
-  
-  .submit-button {
-    background-color: #28a745;
-    color: white;
-  }
-  
-  .cancel-button {
-    background-color: #dc3545;
-    color: white;
-  }
+}

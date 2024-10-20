@@ -1,0 +1,82 @@
+[
+    {
+        "_id": 100001,
+        "Employee_ID": "1010",
+        "Problem": "請問前輩們，台積電的福利制度是什麼？",
+        "Type": "公司",
+        "Launch_Date": "2024-10-13",
+        "Answer": 2
+    },
+    {
+        "_id": 100002,
+        "Employee_ID": "1020",
+        "Problem": "請問前輩們，台積電有哪些社團？",
+        "Type": "社團",
+        "Launch_Date": "2024-09-12",
+        "Answer": 1
+    },
+    {
+        "_id": 100003,
+        "Employee_ID": "1010",
+        "Problem": "請問前輩們，台積電周遭有哪些好吃的？",
+        "Type": "閒聊",
+        "Launch_Date": "2024-10-14",
+        "Answer": 1
+    },
+    {
+        "_id": 100004,
+        "Employee_ID": "1020",
+        "Problem": "新竹有美食嗎？好像會餓死欸...",
+        "Type": "閒聊",
+        "Launch_Date": "2024-09-13",
+        "Answer": 0
+    },
+    {
+        "_id": 100005,
+        "Employee_ID": "1010",
+        "Problem": "請問前輩們，是怎麼維持生活與工作的？",
+        "Type": "閒聊",
+        "Launch_Date": "2024-10-15",
+        "Answer": 0
+    },
+    {
+        "_id": 100006,
+        "Employee_ID": "1020",
+        "Problem": "台積今天股價多少？",
+        "Type": "投資",
+        "Launch_Date": "2024-09-14",
+        "Answer": 1
+    },
+    {
+        "_id": 100007,
+        "Employee_ID": "1010",
+        "Problem": "請問前輩們，台積電會有生日活動嗎？",
+        "Type": "閒聊",
+        "Launch_Date": "2024-10-16",
+        "Answer": 0
+    },
+    {
+        "_id": 100008,
+        "Employee_ID": "1020",
+        "Problem": "請問前輩們，台積電是如何評估員工績效的？",
+        "Type": "公司",
+        "Launch_Date": "2024-09-15",
+        "Answer": 0
+    },
+    {
+        "_id": 100009,
+        "Employee_ID": "1010",
+        "Problem": "想加入XX社要找誰啊?",
+        "Type": "社團",
+        "Launch_Date": "2024-10-17",
+        "Answer": 0
+    },
+    {
+        "_id": 100010,
+        "Employee_ID": "1020",
+        "Problem": "XX社好玩嗎?",
+        "Type": "社團",
+        "Launch_Date": "2024-09-16",
+        "Answer": 0
+    }
+]

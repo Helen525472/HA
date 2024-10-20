@@ -1,0 +1,43 @@
+[
+    {
+        "Problem_ID": 100001,
+        "Answer_ID": 100001,
+        "ID": "100001_100001",
+        "Employee_ID": "1001",
+        "Answer": "薪資就是你的福利",
+        "Launch_Date": "2024-10-13"
+    },
+    {
+        "Problem_ID": 100001,
+        "Answer_ID": 100002,
+        "ID": "100001_100002",
+        "Employee_ID": "1002",
+        "Answer": "回家",
+        "Launch_Date": "2024-10-14"
+    },
+    {
+        "Problem_ID": 100002,
+        "Answer_ID": 100001,
+        "ID": "100002_100001",
+        "Employee_ID": "1002",
+        "Answer": "社團很多，看你喜歡什麼類型的",
+        "Launch_Date": "2024-09-13"
+    },
+    {
+        "Problem_ID": 100003,
+        "Answer_ID": 100001,
+        "ID": "100003_100001",
+        "Employee_ID": "1004",
+        "Answer": "麥當勞",
+        "Launch_Date": "2024-10-14"
+    },
+    {
+        "Problem_ID": 100006,
+        "Answer_ID": 100001,
+        "ID": "100006_100001",
+        "Employee_ID": "1003",
+        "Answer": "1085",
+        "Launch_Date": "2024-09-14"
+    }
+
+]

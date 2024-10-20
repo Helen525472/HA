@@ -18,10 +18,10 @@ function Village() {
     // 打开公司内部地图
     const handleMapClick = () => {
         // 如果使用外部链接：
-        window.open('https://example.com/company-map', '_blank');
+        //window.open('https://example.com/company-map', '_blank');
         
         // 如果使用本地文件：
-        // window.open('/files/company-map.pdf', '_blank');
+        window.open('/picture/map.jpg', '_blank');
     };
 
     return (

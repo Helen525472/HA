@@ -42,6 +42,7 @@ const senpaiRoutes = require('./routes/senpai');
 const foodRoutes = require('./routes/foods');
 const signRoutes = require('./routes/sign');
 const breakroomRoutes = require('./routes/breakroom');
+const problemRoutes = require('./routes/problem');
 
 // 使用路由
 app.use('/api/user', userRoutes);
@@ -57,6 +58,7 @@ app.use('/api/senpai', senpaiRoutes);
 app.use('/api/foods', foodRoutes);
 app.use('/api/sign', signRoutes);
 app.use('/api/breakroom', breakroomRoutes);
+app.use('/api/problem', problemRoutes);
 
 // 啟動服務器
 app.listen( 3001, () => {

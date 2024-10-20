@@ -11,6 +11,7 @@ router.post('/check-user', async (req, res) => {
     const formattedPassword = `${parseInt(password.substring(0, 4), 10)}/` +
                           `${parseInt(password.substring(4, 6), 10)}/` +
                           `${parseInt(password.substring(6, 8), 10)}`;
+
     console.log(`userId: ${userId}, formattedPassword: ${formattedPassword}`);
     
     try {
@@ -73,6 +74,44 @@ router.get('/answer-status', async (req, res) => {
   } catch (error) {
     console.error('Error checking answer status:', error);
     res.status(500).json({ message: '伺服器錯誤' });
+  }
+});
+
+router.get('/check-new-employee', async (req, res) => {
+  const userId = req.session.userId;
+
+  if (!userId) {
+    console.log('未找到用戶 ID，返回未登錄狀態');
+    return res.status(401).json({ message: '未登錄' });
+  }
+
+  try {
+    const user = await User.findById(userId);
+
+    if (!user) {
+      console.log('未找到用戶，返回 404');
+      return res.status(404).json({ message: '用戶未找到' });
+    }
+
+    const hireDate = new Date(user.Hire_Date.replace(/\//g, '-'));
+    const cutoffDate = new Date('2024-09-01');
+    const isNewEmployee = hireDate >= cutoffDate;
+
+    res.json({ 
+      isNewEmployee: isNewEmployee,
+      hireDate: user.Hire_Date
+    });
+  } catch (error) {
+    console.error('檢查新員工狀態時出錯:', error);
+    res.status(500).json({ message: '服務器錯誤' });
+  }
+});
+
+router.get('/id', (req, res) => {
+  if (req.session && req.session.userId) {
+    res.json({ userId: req.session.userId });
+  } else {
+    res.status(401).json({ message: '未登錄' });
   }
 });
 
