@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const Problem = require('../models/Problem'); // 確保您有正確的 Problem 模型
 const Answer = require('../models/Answer');
+const { addExperience } = require('../routes/addexperience');
 
 // 獲取問題的路由
 router.get('/', async (req, res) => {
@@ -67,6 +68,18 @@ router.post('/', async (req, res) => {
 
         await newProblem.save();
         console.log('問題成功保存到數據庫');
+
+        // 增加提問經驗值
+        try {
+            const { user, leveledUp } = await addExperience(Employee_ID, 5); // 提問獲得 5 點經驗值
+            if (leveledUp) {
+              console.log(`恭喜你升級了！新等級：${user.Level}`);
+              // 這裡可以添加一些升級後的邏輯，比如發送通知等
+            }
+          } catch (expError) {
+            console.error('增加經驗值失敗:', expError);
+          }
+
         res.status(201).json(newProblem);
         console.log('成功響應已發送');
     } catch (error) {
@@ -76,28 +89,23 @@ router.post('/', async (req, res) => {
 });
 
 router.post('/:problemId/answers', async (req, res) => {
-    console.log('收到新回答提交請求');
-    console.log('問題 ID:', req.params.problemId);
-    console.log('請求體:', req.body);
-    console.log('Session:', req.session);  // 添加這行來檢查整
     try {
         const { problemId } = req.params;
         const { content } = req.body;
         const Employee_ID = req.session.userId;
-        console.log('提交回答 - 員工 ID:', Employee_ID);
+        //console.log('提交回答 - 員工 ID:', Employee_ID);
         
         if (!Employee_ID) {
-            console.log('未找到員工 ID，可能未登錄');
+            //console.log('未找到員工 ID，可能未登錄');
             return res.status(401).json({ message: '未授權，請先登錄' });
         }
 
       const problem = await Problem.findById(problemId);
       if (!problem) {
-        console.log('問題不存在:', problemId);
+        //console.log('問題不存在:', problemId);
         return res.status(404).json({ message: '問題不存在' });
       }
-  
-      problem.Answer += 1;
+
       await problem.save();
       console.log('問題回答數更新:', problem.Answer);
       
@@ -124,7 +132,18 @@ router.post('/:problemId/answers', async (req, res) => {
     problem.Answer = (problem.Answer || 0) + 1;
     await problem.save();
     console.log('問題回答數更新:', problem.Answer);
-  
+
+     // 增加回答經驗值
+     try {
+        const { user, leveledUp } = await addExperience(Employee_ID, 10); // 回答獲得 10 點經驗值
+        if (leveledUp) {
+          console.log(`恭喜你升級了！新等級：${user.Level}`);
+          // 這裡可以添加一些升級後的邏輯，比如發送通知等
+        }
+      } catch (expError) {
+        console.error('增加經驗值失敗:', expError);
+      }
+
       res.status(201).json(newAnswer);
     } catch (error) {
       console.error('創建新回答時出錯:', error);

@@ -230,8 +230,8 @@ function Tsmcard() {
               <button onClick={() => handleTypeChange('投資')}>投資板</button>
             </div>
           )}
-          <button onClick={() => setCurrentSection('myQuestions')}>我的問題</button>
-          <button onClick={() => setCurrentSection('myAnswers')}>我的回答</button>
+          {/*<button onClick={() => setCurrentSection('myQuestions')}>我的問題</button>*/}
+          {/*<button onClick={() => setCurrentSection('myAnswers')}>我的回答</button>*/}
         </div>
         
         {/* Main Content */}
